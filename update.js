@@ -6,20 +6,18 @@ var data = require('./data/data.json');
 
 const url = 'https://mkwrs.com/mk8dx/';
 
+function evalY(leftValue) {
+    return Math.floor((leftValue - 1) / 4);
+}
+    
 function getTime150(int) {
-    console.log(int);
     if (int == 1) {
         return 5;
     }
-    const x = (int - 1) * 24;
-    let y = 0;
-    if (int <= 8) {
-        y = 1;
-    }
-    if (int > 8) {
-        y = Math.floor(int / 4);
-    }
-    return x + 5 + y;
+    const z = int-1;
+    const x = z*24;
+    const res = x + 5 -10;
+    return res;
 }
 
 function getRunner150(int) {
@@ -29,7 +27,6 @@ function getRunner150(int) {
     const x = (int - 1) * 24;
     return x + 6;
 }
-
 function getDate150(int) {
     if (int == 1) {
         return 8;
@@ -37,7 +34,6 @@ function getDate150(int) {
     const x = (int - 1) * 24;
     return x + 8;
 }
-
 function getTime200(int) {
     if (int == 1) {
         return 15;
@@ -45,7 +41,6 @@ function getTime200(int) {
     const x = (int - 1) * 24;
     return x + 15;
 }
-
 function getRunner200(int) {
     if (int == 1) {
         return 16;
@@ -53,7 +48,6 @@ function getRunner200(int) {
     const x = (int - 1) * 24;
     return x + 16;
 }
-
 function getDate200(int) {
     if (int == 1) {
         return 18;
@@ -63,18 +57,32 @@ function getDate200(int) {
 }
 
 //[time, runner, date]
-//1-4: +1
+//1-4: +0
 //5-8: +1
 //9-12: +2
 //13-16: +3
 //17-20: +4
+//17:+4
+//18:
 //21-24: +5
-//25-28: +6
+//25-28: +2
+
+function getEvenIndexedValues(arr) {
+    const evenIndexedValues = [];
+    for (let i = 0; i < arr.length; i += 2) {
+      evenIndexedValues.push(arr[i]);
+    }
+    return evenIndexedValues;
+}  
 axios
     .get(url)
     .then((response) => {
         const $ = cheerio.load(response.data);
-        console.log($('table td').eq(getTime150(18)).text());
+        const pageText = $('body').text();
+        let times = pageText.match(/\d{1,}'\d{1,}"\d{1,}/g);
+        times =times.splice(0, 192);
+console.log(times[191]);
+        fs.writeFileSync('./update.json', JSON.stringify(data));
     })
     .catch((error) => {
         console.log(error);
