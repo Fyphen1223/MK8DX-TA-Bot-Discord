@@ -82,7 +82,6 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         time = convertToMs(time);
-        console.log(time);
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)
