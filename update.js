@@ -7,54 +7,59 @@ var data = require('./data/data.json');
 const url = 'https://mkwrs.com/mk8dx/';
 
 function getTime150(int) {
-    if(int==1) {
+    console.log(int);
+    if (int == 1) {
         return 5;
     }
-    const x = (int -1)*24;
+    const x = (int - 1) * 24;
     let y = 0;
-    if(int <= 8) y=1;
-    
-    return x+5+y;
+    if (int <= 8) {
+        y = 1;
+    }
+    if (int > 8) {
+        y = Math.floor(int / 4);
+    }
+    return x + 5 + y;
 }
 
 function getRunner150(int) {
-    if(int==1) {
+    if (int == 1) {
         return 6;
     }
-    const x = (int-1)*24;
-    return x+6;
+    const x = (int - 1) * 24;
+    return x + 6;
 }
 
 function getDate150(int) {
-    if(int==1) {
+    if (int == 1) {
         return 8;
     }
-    const x = (int-1)*24;
-    return x+8;
+    const x = (int - 1) * 24;
+    return x + 8;
 }
 
 function getTime200(int) {
-    if(int==1) {
+    if (int == 1) {
         return 15;
     }
-    const x = (int-1)*24;
-    return x+15;
+    const x = (int - 1) * 24;
+    return x + 15;
 }
 
 function getRunner200(int) {
-    if(int==1) {
+    if (int == 1) {
         return 16;
     }
-    const x = (int-1)*24;
-    return x+16;
+    const x = (int - 1) * 24;
+    return x + 16;
 }
 
 function getDate200(int) {
-    if(int==1) {
+    if (int == 1) {
         return 18;
     }
-    const x = (int-1)*24;
-    return x+18;
+    const x = (int - 1) * 24;
+    return x + 18;
 }
 
 //[time, runner, date]
@@ -64,14 +69,16 @@ function getDate200(int) {
 //13-16: +3
 //17-20: +4
 //21-24: +5
-axios.get(url)
-  .then(response => {
-    const $ = cheerio.load(response.data);
-    console.log($('table td').eq(getTime150(6)).text());
-  })
-  .catch(error => {
-    console.log(error);
-  });
+//25-28: +6
+axios
+    .get(url)
+    .then((response) => {
+        const $ = cheerio.load(response.data);
+        console.log($('table td').eq(getTime150(18)).text());
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 
 
   /*
