@@ -1,120 +1,60 @@
+// scraper.js
 const axios = require('axios');
-const cheerio = require('cheerio');
 const fs = require('fs');
-
-var data = require('./data/data.json');
-
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const url = 'https://mkwrs.com/mk8dx/';
 
-function evalY(leftValue) {
-    return Math.floor((leftValue - 1) / 4);
-}
-    
-function getTime150(int) {
-    if (int == 1) {
-        return 5;
-    }
-    const z = int-1;
-    const x = z*24;
-    const res = x + 5 -10;
-    return res;
+
+/*
+2回に1回は余計なtdが1個増える（トラック）
+8回に1回は余計なtdが1個増える
+
+1のとき150は1個目
+2の時150は3個目
+3のとき150は5個目
+4の時150は7個目
+5の時150は9個目
+*/
+async function scrapeInfo(data, int) {
+	const dom = new JSDOM(data);
+	if((int % 8) == 1) {
+		let preint = 0;
+		if(int==1) {
+			preint = 1;
+		} else {
+			preint = int * 2;
+			preint--;
+		}
+		const time150 = dom.window.document.querySelector('.wr').children[0].children[preint].children[2].children[0].textContent.trim();
+		console.log(time150);
+	} 
+	else if((int%2) ==1) {
+		let preint = 0;
+		if(int==1) {
+			preint = 1;
+		} else {
+			preint = int * 2;
+			preint--;
+		}
+		const time = dom.window.document.querySelector('.wr').children[0].children[preint].children[1].children[0].textContent.trim();
+		console.log(time);
+	} else {
+		let preint = 0;
+		if(int==1) {
+			preint = 1;
+		} else {
+			preint = int * 2;
+			preint--;
+		}
+		const time = dom.window.document.querySelector('.wr').children[0].children[preint].children[0].children[0].textContent.trim();
+		console.log(time);
+	}
 }
 
-function getRunner150(int) {
-    if (int == 1) {
-        return 6;
-    }
-    const x = (int - 1) * 24;
-    return x + 6;
-}
-function getDate150(int) {
-    if (int == 1) {
-        return 8;
-    }
-    const x = (int - 1) * 24;
-    return x + 8;
-}
-function getTime200(int) {
-    if (int == 1) {
-        return 15;
-    }
-    const x = (int - 1) * 24;
-    return x + 15;
-}
-function getRunner200(int) {
-    if (int == 1) {
-        return 16;
-    }
-    const x = (int - 1) * 24;
-    return x + 16;
-}
-function getDate200(int) {
-    if (int == 1) {
-        return 18;
-    }
-    const x = (int - 1) * 24;
-    return x + 18;
+async function run() {
+	const data = await axios.get(url);
+	await scrapeInfo(data.data, 3);
 }
 
-//[time, runner, date]
-//1-4: +0
-//5-8: +1
-//9-12: +2
-//13-16: +3
-//17-20: +4
-//17:+4
-//18:
-//21-24: +5
-//25-28: +2
-
-function getEvenIndexedValues(arr) {
-    const evenIndexedValues = [];
-    for (let i = 0; i < arr.length; i += 2) {
-      evenIndexedValues.push(arr[i]);
-    }
-    return evenIndexedValues;
-}  
-axios
-    .get(url)
-    .then((response) => {
-        const $ = cheerio.load(response.data);
-        const pageText = $('body').text();
-        let times = pageText.match(/\d{1,}'\d{1,}"\d{1,}/g);
-        times =times.splice(0, 192);
-console.log(times[191]);
-        fs.writeFileSync('./update.json', JSON.stringify(data));
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-
-
-  /*
-      let i = 0;
-    while(i<=96) {
-        data.wr.ta150[i] = [];
-        data.wr.ta150[i].push($('table td').eq(getTime150(i)).text().replace(`"`, '.'));
-        data.wr.ta150[i].push($('table td').eq(getRunner150(i)).text());
-        data.wr.ta150[i].push($('table td').eq(getDate150(i)).text());
-        i++;
-    }
-    fs.writeFileSync('./update.json', JSON.stringify(data));
-  */
-      //5(6) -> 150cc time
-    //6(7) -> runner's name
-    //8(8) -> date
-    //10(9) -> Character
-    //11(10) -> Machine
-    //12(11) -> Tire
-    //13(12) -> Grider
-    //15(14) -> 200cc time
-    //16(15) -> 200cc runner's name
-    //18(17) -> date
-    //20(19) -> 200cc character
-    //21(20) -> 200cc machine
-    //22(21) -> 200cc Tire
-    //23(22) -> 200cc Grider
-    //24
-    //29(28) ->
-    //53 +24
-    //77
+run();
