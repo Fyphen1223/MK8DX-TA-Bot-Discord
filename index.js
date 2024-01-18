@@ -3,7 +3,7 @@ require('dotenv').config();
 const discord = require('discord.js');
 const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const data = require('./data/data.json');
-const { convertMs } = require('./util/util');
+const { convertMs, convertToMs } = require('./util/util');
 
 const { createClient } = require('redis');
 const redis = createClient({
@@ -76,7 +76,13 @@ client.on('interactionCreate', async (interaction) => {
     }
     if (command === 'nita150' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        let time = interaction.options.getInteger('time');
+        let time = interaction.options.getString('time');
+        if (!convertToMs(time)) {
+            await interaction.reply('Format is illegal.');
+            return;
+        }
+        time = convertToMs(time);
+        console.log(time);
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)
@@ -131,7 +137,12 @@ client.on('interactionCreate', async (interaction) => {
     }
     if (command === 'nita200' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        let time = interaction.options.getInteger('time');
+        let time = interaction.options.getString('time');
+        if (!convertToMs(time)) {
+            await interaction.reply('Format is illegal.');
+            return;
+        }
+        time = convertToMs(time);
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)
@@ -186,7 +197,12 @@ client.on('interactionCreate', async (interaction) => {
     }
     if (command === 'ta150' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        let time = interaction.options.getInteger('time');
+        let time = interaction.options.getString('time');
+        if (!convertToMs(time)) {
+            await interaction.reply('Format is illegal.');
+            return;
+        }
+        time = convertToMs(time);
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)
@@ -241,7 +257,12 @@ client.on('interactionCreate', async (interaction) => {
     }
     if (command === 'ta200' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        let time = interaction.options.getInteger('time');
+        let time = interaction.options.getString('time');
+        if (!convertToMs(time)) {
+            await interaction.reply('Format is illegal.');
+            return;
+        }
+        time = convertToMs(time);
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)

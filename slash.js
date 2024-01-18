@@ -22,11 +22,13 @@ const commands = [
                             'The track you want to register score on'
                         )
                 )
-                .addIntegerOption((option) =>
+                .addStringOption((option) =>
                     option
                         .setRequired(true)
                         .setName('time')
-                        .setDescription('Time formatted in ms: 15239 (152s39)')
+                        .setDescription(
+                            'Time should be formatted in next format: mm:ss.ss (2:23.198)'
+                        )
                 )
         )
         .addSubcommand((subcommand) =>
@@ -58,11 +60,13 @@ const commands = [
                             'The track you want to register score on'
                         )
                 )
-                .addIntegerOption((option) =>
+                .addStringOption((option) =>
                     option
                         .setRequired(true)
                         .setName('time')
-                        .setDescription('Time formatted in ms: 15239 (152s39)')
+                        .setDescription(
+                            'Time should be formatted in next format: mm:ss.ss (2:23.198)'
+                        )
                 )
         )
         .addSubcommand((subcommand) =>
@@ -94,11 +98,13 @@ const commands = [
                             'The track you want to register score on'
                         )
                 )
-                .addIntegerOption((option) =>
+                .addStringOption((option) =>
                     option
                         .setRequired(true)
                         .setName('time')
-                        .setDescription('Time formatted in ms: 15239 (152s39)')
+                        .setDescription(
+                            'Time should be formatted in next format: mm:ss.ss (2:23.198)'
+                        )
                 )
         )
         .addSubcommand((subcommand) =>
@@ -130,11 +136,13 @@ const commands = [
                             'The track you want to register score on'
                         )
                 )
-                .addIntegerOption((option) =>
+                .addStringOption((option) =>
                     option
                         .setRequired(true)
                         .setName('time')
-                        .setDescription('Time formatted in ms: 15239 (152s39)')
+                        .setDescription(
+                            'Time should be formatted in next format: mm:ss.ss (2:23.198)'
+                        )
                 )
         )
         .addSubcommand((subcommand) =>
