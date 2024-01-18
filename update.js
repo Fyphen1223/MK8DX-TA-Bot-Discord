@@ -26,10 +26,12 @@ async function scrapeInfo(data, int) {
 			preint = int * 2;
 			preint--;
 		}
+		let int200 = preint +1;
 		const time150 = dom.window.document.querySelector('.wr').children[0].children[preint].children[2].children[0].textContent.trim();
-		console.log(time150);
+		const time200 = dom.window.document.querySelector('.wr').children[0].children[int200].children[0].children[0].textContent.trim();
+		console.log(time150, time200);
 	} 
-	else if((int%2) ==1) {
+	else if((int%2) ==0) {
 		let preint = 0;
 		if(int==1) {
 			preint = 1;
@@ -37,8 +39,10 @@ async function scrapeInfo(data, int) {
 			preint = int * 2;
 			preint--;
 		}
-		const time = dom.window.document.querySelector('.wr').children[0].children[preint].children[1].children[0].textContent.trim();
-		console.log(time);
+		let int200 = preint +1;
+		const time150 = dom.window.document.querySelector('.wr').children[0].children[preint].children[1].children[0].textContent.trim();
+		const time200 = dom.window.document.querySelector('.wr').children[0].children[int200].children[0].children[0].textContent.trim();
+		console.log(time150, time200);
 	} else {
 		let preint = 0;
 		if(int==1) {
@@ -47,14 +51,16 @@ async function scrapeInfo(data, int) {
 			preint = int * 2;
 			preint--;
 		}
-		const time = dom.window.document.querySelector('.wr').children[0].children[preint].children[0].children[0].textContent.trim();
-		console.log(time);
+		let int200 = preint +1;
+		const time150 = dom.window.document.querySelector('.wr').children[0].children[preint].children[0].children[0].textContent.trim();
+		const time200 = dom.window.document.querySelector('.wr').children[0].children[int200].children[0].children[0].textContent.trim();
+		console.log(time150, time200);
 	}
 }
 
 async function run() {
 	const data = await axios.get(url);
-	await scrapeInfo(data.data, 3);
+	await scrapeInfo(data.data, 1);
 }
 
 run();
