@@ -24,9 +24,7 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setName('time')
-                        .setDescription(
-                            'Time formatted in next format: 2:21.18'
-                        )
+                        .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
         )
         .addSubcommand((subcommand) =>
@@ -59,9 +57,7 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setName('time')
-                        .setDescription(
-                            'Time formatted in next format: 2:21.18'
-                        )
+                        .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
         )
         .addSubcommand((subcommand) =>
@@ -94,9 +90,7 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setName('time')
-                        .setDescription(
-                            'Time formatted in next format: 2:21.18'
-                        )
+                        .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
         )
         .addSubcommand((subcommand) =>
@@ -129,9 +123,7 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setName('time')
-                        .setDescription(
-                            'Time formatted in next format: 2:21.18'
-                        )
+                        .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
         )
         .addSubcommand((subcommand) =>
