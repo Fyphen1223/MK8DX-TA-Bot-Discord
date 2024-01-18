@@ -76,7 +76,7 @@ client.on('interactionCreate', async (interaction) => {
     }
     if (command === 'nita150' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        let time = interaction.options.getString('time');
+        let time = interaction.options.getInteger('time');
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)
@@ -88,6 +88,20 @@ client.on('interactionCreate', async (interaction) => {
         }
         let index = data.tracks[current.lang].indexOf(track);
         index = `${index++}`;
+        if (current.nita150[index] < time) {
+            await interaction.editReply(
+                `The time you entered is slower than your best. Your best is ${convertMs(
+                    current.nita150[index]
+                )}`
+            );
+            return;
+        }
+        if (current.nita150[index] == time) {
+            await interaction.editReply(
+                'The time you entered is the same as your best.'
+            );
+            return;
+        }
         current.nita150[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
@@ -117,7 +131,7 @@ client.on('interactionCreate', async (interaction) => {
     }
     if (command === 'nita200' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        const time = interaction.options.getString('time');
+        let time = interaction.options.getInteger('time');
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)
@@ -129,6 +143,20 @@ client.on('interactionCreate', async (interaction) => {
         }
         let index = data.tracks[current.lang].indexOf(track);
         index = `${index++}`;
+        if (current.nita200[index] < time) {
+            await interaction.editReply(
+                `The time you entered is slower than your best. Your best is ${convertMs(
+                    current.nita200[index]
+                )}`
+            );
+            return;
+        }
+        if (current.nita200[index] == time) {
+            await interaction.editReply(
+                'The time you entered is the same as your best.'
+            );
+            return;
+        }
         current.nita200[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
@@ -156,9 +184,9 @@ client.on('interactionCreate', async (interaction) => {
         );
         return;
     }
-    if (command === 'ta200' && subcommand === 'register') {
+    if (command === 'ta150' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        const time = interaction.options.getString('time');
+        let time = interaction.options.getInteger('time');
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)
@@ -170,13 +198,27 @@ client.on('interactionCreate', async (interaction) => {
         }
         let index = data.tracks[current.lang].indexOf(track);
         index = `${index++}`;
-        current.ta200[index] = time;
+        if (current.ta150[index] < time) {
+            await interaction.editReply(
+                `The time you entered is slower than your best. Your best is ${convertMs(
+                    current.nita150[index]
+                )}`
+            );
+            return;
+        }
+        if (current.nita150[index] == time) {
+            await interaction.editReply(
+                'The time you entered is the same as your best.'
+            );
+            return;
+        }
+        current.ta150[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
-            `Set your time on ${track} on 200cc TA to ${convertMs(time)}`
+            `Set your time on ${track} on 150cc TA to ${convertMs(time)}`
         );
     }
-    if (command === 'ta200' && subcommand === 'show') {
+    if (command === 'ta150' && subcommand === 'show') {
         await interaction.deferReply();
         const track = interaction.options.getString('track');
         let current = JSON.parse(await redis.get(interaction.user.id));
@@ -185,7 +227,7 @@ client.on('interactionCreate', async (interaction) => {
         current = JSON.parse(await redis.get(interaction.user.id));
         let index = data.tracks[current.lang].indexOf(track);
         index = `${index++}`;
-        const time = current.ta200[index];
+        const time = current.ta150[index];
         if (!time) {
             await interaction.editReply(
                 `You haven't registered this track's time.`
@@ -193,13 +235,13 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         await interaction.editReply(
-            `Your time on ${track} on 200cc TA is ${convertMs(time)}`
+            `Your time on ${track} on 150cc TA is ${convertMs(time)}`
         );
         return;
     }
     if (command === 'ta200' && subcommand === 'register') {
         const track = interaction.options.getString('track');
-        const time = interaction.options.getString('time');
+        let time = interaction.options.getInteger('time');
         await interaction.deferReply();
         let current = await redis.get(interaction.user.id);
         if (!current)

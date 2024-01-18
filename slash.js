@@ -17,12 +17,14 @@ const commands = [
                     option
                         .setAutocomplete(true)
                         .setName('track')
+                        .setRequired(true)
                         .setDescription(
                             'The track you want to register score on'
                         )
                 )
-                .addStringOption((option) =>
+                .addIntegerOption((option) =>
                     option
+                        .setRequired(true)
                         .setName('time')
                         .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
@@ -35,6 +37,7 @@ const commands = [
                     option
                         .setAutocomplete(true)
                         .setName('track')
+                        .setRequired(true)
                         .setDescription('The track you want to see the time')
                 )
         ),
@@ -49,13 +52,15 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setAutocomplete(true)
+                        .setRequired(true)
                         .setName('track')
                         .setDescription(
                             'The track you want to register score on'
                         )
                 )
-                .addStringOption((option) =>
+                .addIntegerOption((option) =>
                     option
+                        .setRequired(true)
                         .setName('time')
                         .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
@@ -67,6 +72,7 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setAutocomplete(true)
+                        .setRequired(true)
                         .setName('track')
                         .setDescription('The track you want to see the time')
                 )
@@ -82,13 +88,15 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setAutocomplete(true)
+                        .setRequired(true)
                         .setName('track')
                         .setDescription(
                             'The track you want to register score on'
                         )
                 )
-                .addStringOption((option) =>
+                .addIntegerOption((option) =>
                     option
+                        .setRequired(true)
                         .setName('time')
                         .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
@@ -99,6 +107,7 @@ const commands = [
                 .setDescription('Show your time on the specified track')
                 .addStringOption((option) =>
                     option
+                        .setRequired(true)
                         .setAutocomplete(true)
                         .setName('track')
                         .setDescription('The track you want to see the time')
@@ -115,13 +124,15 @@ const commands = [
                 .addStringOption((option) =>
                     option
                         .setAutocomplete(true)
+                        .setRequired(true)
                         .setName('track')
                         .setDescription(
                             'The track you want to register score on'
                         )
                 )
-                .addStringOption((option) =>
+                .addIntegerOption((option) =>
                     option
+                        .setRequired(true)
                         .setName('time')
                         .setDescription('Time formatted in ms: 15239 (152s39)')
                 )
@@ -132,6 +143,7 @@ const commands = [
                 .setDescription('Show your time on the specified track')
                 .addStringOption((option) =>
                     option
+                        .setRequired(true)
                         .setAutocomplete(true)
                         .setName('track')
                         .setDescription('The track you want to see the time')
@@ -147,6 +159,7 @@ const commands = [
                 .setDescription('Change your language')
                 .addStringOption((option) =>
                     option
+                        .setRequired(true)
                         .setName('lang')
                         .setDescription('Language')
                         .addChoices(
