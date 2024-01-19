@@ -3,13 +3,12 @@ function isValidTime(time) {
     console.log(format);
 }
 
-function convertMs(millis) {
-    const seconds = Math.floor(millis / 1000);
-    const ms = Math.floor(millis - seconds * 1000);
-    const min = Math.floor(seconds / 60);
-    const secondsStr = seconds - min * 60;
-    return `${min}:${secondsStr}.${ms}`;
+function convertMs(milliseconds) {
+  var minutes = Math.floor(milliseconds / 60000);
+  var seconds = ((milliseconds % 60000) / 1000).toFixed(3);
+  return (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 }
+
 
 function isValidTimeFormat(time) {
     var regex = /^(0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9])(\.([0-9]{1,3}))?$/;
