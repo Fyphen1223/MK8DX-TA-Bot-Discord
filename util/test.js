@@ -1,2 +1,2 @@
-const { convertMs } = require('./util');
-console.log(convertMs('130982'));
+const { convertMs, convertToMs } = require('./util');
+console.log(convertToMs('0:00.1'));

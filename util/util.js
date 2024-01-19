@@ -11,20 +11,29 @@ function convertMs(millis) {
     return `${min}:${secondsStr}.${ms}`;
 }
 
-function isValidTimeFormat(timeString) {
-    var timeRegex = /^\d+:\d+\.\d{1,3}$/;
-    return timeRegex.test(timeString);
-}
-
-function convertToMs(timeString) {
-    if (!isValidTimeFormat(timeString)) {
-        return false;
+function isValidTimeFormat(time) {
+    var regex = /^(0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9])(\.([0-9]{1,3}))?$/;
+    return regex.test(time);
+  }
+  
+  function convertToMs(time) {
+    if (!isValidTimeFormat(time)) {
+      return false;
     }
-    var timeArray = timeString.split(':');
-    var minutes = parseInt(timeArray[0], 10);
-    var seconds = parseFloat(timeArray[1]);
-    var milliseconds = (minutes * 60 + seconds) * 1000;
+  
+    var parts = time.split(":");
+    var milliseconds = 0;
+    if (parts.length === 2) {
+      var minutes = parseInt(parts[0]);
+      var seconds = parseFloat(parts[1]);
+      milliseconds = (minutes * 60 + seconds) * 1000;
+    } else if (parts.length === 3) {
+      var hours = parseInt(parts[0]);
+      var minutes = parseInt(parts[1]);
+      var seconds = parseFloat(parts[2]);
+      milliseconds = ((hours * 60 + minutes) * 60 + seconds) * 1000;
+    }
     return Math.ceil(milliseconds);
-}
+  }
 
 module.exports = { isValidTime, convertMs, convertToMs };
