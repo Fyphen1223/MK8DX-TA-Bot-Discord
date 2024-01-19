@@ -50,7 +50,12 @@ client.on('interactionCreate', async (interaction) => {
     current = JSON.parse(await redis.get(interaction.user.id));
     const command = interaction.commandName;
     const subcommand = interaction.options.getSubcommand();
-    if (command === 'nita150' || command === 'nita200' || command==='ta150' || command === 'ta200') {
+    if (
+        command === 'nita150' ||
+        command === 'nita200' ||
+        command === 'ta150' ||
+        command === 'ta200'
+    ) {
         const focusedValue = interaction.options.getFocused();
         let filtered = data.tracks[current.lang].filter((choice) =>
             choice.startsWith(focusedValue)
@@ -92,11 +97,27 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         let index = data.tracks[current.lang].indexOf(track);
-        index = `${index++}`;
+        index++;
+        if (data.wr.nita150[index][0] >= time) {
+            await interaction.editReply(
+                `Your time is faster than current WR. Current WR: ${convertMs(
+                    data.wr.ta150[index][0]
+                )}\nPlease submit your WR on https://mkwrs.com/mk8dx/`
+            );
+            return;
+        }
+        if (!current.nita150[index]) {
+            current.nita150[index] = time;
+            await redis.set(interaction.user.id, JSON.stringify(current));
+            await interaction.editReply(
+                `Set your time on ${track} on 150cc TA to ${convertMs(time)}`
+            );
+            return;
+        }
         if (current.nita150[index] < time) {
             await interaction.editReply(
                 `The time you entered is slower than your best. Your best is ${convertMs(
-                    current.nita150[index]
+                    current.ta150[index]
                 )}`
             );
             return;
@@ -121,7 +142,7 @@ client.on('interactionCreate', async (interaction) => {
             await redis.set(interaction.user.id, JSON.stringify(data.default));
         current = JSON.parse(await redis.get(interaction.user.id));
         let index = data.tracks[current.lang].indexOf(track);
-        index = `${index++}`;
+        index++;
         const time = current.nita150[index];
         if (!time) {
             await interaction.editReply(
@@ -130,7 +151,7 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         await interaction.editReply(
-            `Your time on ${track} on 150cc NITA is ${convertMs(time)}`
+            `Your time on ${track} on 150cc NITA is ${convertMs(time)}. \nYour time is ${convertMs(current.nita150[index]- data.wr.nita150[index][0])} slower than the world record.`
         );
         return;
     }
@@ -152,22 +173,38 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         let index = data.tracks[current.lang].indexOf(track);
-        index = `${index++}`;
-        if (current.nita200[index] < time) {
+        index++;
+        if (data.wr.ta200[index][0] >= time) {
+            await interaction.editReply(
+                `Your time is faster than current WR. Current WR: ${convertMs(
+                    data.wr.ta200[index][0]
+                )}\nPlease submit your WR on https://mkwrs.com/mk8dx/`
+            );
+            return;
+        }
+        if (!current.ta150[index]) {
+            current.ta150[index] = time;
+            await redis.set(interaction.user.id, JSON.stringify(current));
+            await interaction.editReply(
+                `Set your time on ${track} on 200cc NITA to ${convertMs(time)}`
+            );
+            return;
+        }
+        if (current.ta200[index] < time) {
             await interaction.editReply(
                 `The time you entered is slower than your best. Your best is ${convertMs(
-                    current.nita200[index]
+                    current.ta200[index]
                 )}`
             );
             return;
         }
-        if (current.nita200[index] == time) {
+        if (current.ta200[index] == time) {
             await interaction.editReply(
                 'The time you entered is the same as your best.'
             );
             return;
         }
-        current.nita200[index] = time;
+        current.ta200[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
             `Set your time on ${track} on 200cc NITA to ${convertMs(time)}`
@@ -181,7 +218,7 @@ client.on('interactionCreate', async (interaction) => {
             await redis.set(interaction.user.id, JSON.stringify(data.default));
         current = JSON.parse(await redis.get(interaction.user.id));
         let index = data.tracks[current.lang].indexOf(track);
-        index = `${index++}`;
+        index++;
         const time = current.nita200[index];
         if (!time) {
             await interaction.editReply(
@@ -190,7 +227,11 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         await interaction.editReply(
-            `Your time on ${track} on 200cc NITA is ${convertMs(time)}`
+            `Your time on ${track} on 200cc NITA is ${convertMs(
+                time
+            )}. \nYour time is ${convertMs(
+                current.nita200[index] - data.wr.nita200[index][0]
+            )} slower than the world record.`
         );
         return;
     }
@@ -213,7 +254,7 @@ client.on('interactionCreate', async (interaction) => {
         }
         let index = data.tracks[current.lang].indexOf(track);
         index++;
-        if(data.wr.ta150[index][0]>=time) {
+        if (data.wr.ta150[index][0] >= time) {
             await interaction.editReply(
                 `Your time is faster than current WR. Current WR: ${convertMs(
                     data.wr.ta150[index][0]
@@ -221,7 +262,7 @@ client.on('interactionCreate', async (interaction) => {
             );
             return;
         }
-        if(!current.ta150[index]) {
+        if (!current.ta150[index]) {
             current.ta150[index] = time;
             await redis.set(interaction.user.id, JSON.stringify(current));
             await interaction.editReply(
@@ -266,7 +307,11 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         await interaction.editReply(
-            `Your time on ${track} on 150cc TA is ${convertMs(time)}. \nYour time is ${convertMs(current.ta150[index]- data.wr.ta150[index][0])} slower than the world record.`
+            `Your time on ${track} on 150cc TA is ${convertMs(
+                time
+            )}. \nYour time is ${convertMs(
+                current.ta150[index] - data.wr.ta150[index][0]
+            )} slower than the world record.`
         );
         return;
     }
@@ -289,7 +334,7 @@ client.on('interactionCreate', async (interaction) => {
         }
         let index = data.tracks[current.lang].indexOf(track);
         index++;
-        if(data.wr.ta200[index][0]>=time) {
+        if (data.wr.ta200[index][0] >= time) {
             await interaction.editReply(
                 `Your time is faster than current WR. Current WR: ${convertMs(
                     data.wr.ta200[index][0]
@@ -297,11 +342,11 @@ client.on('interactionCreate', async (interaction) => {
             );
             return;
         }
-        if(!current.ta200[index]) {
+        if (!current.ta200[index]) {
             current.ta200[index] = time;
             await redis.set(interaction.user.id, JSON.stringify(current));
             await interaction.editReply(
-                `Set your time on ${track} on 150cc TA to ${convertMs(time)}`
+                `Set your time on ${track} on 200cc TA to ${convertMs(time)}`
             );
             return;
         }
@@ -342,7 +387,11 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         await interaction.editReply(
-            `Your time on ${track} on 150cc TA is ${convertMs(time)}. \nYour time is ${convertMs(current.ta200[index]- data.wr.ta200[index][0])} slower than the world record.`
+            `Your time on ${track} on 200cc TA is ${convertMs(
+                time
+            )}. \nYour time is ${convertMs(
+                current.ta200[index] - data.wr.ta200[index][0]
+            )} slower than the world record.`
         );
         return;
     }
