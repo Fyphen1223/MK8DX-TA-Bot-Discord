@@ -35,7 +35,7 @@ client.on('ready', () => {
     redis.connect();
 });
 
-redis.on('ready', async() => {
+redis.on('ready', async () => {
     console.log('The Database is ready');
 });
 redis.on('error', (err) => {
@@ -151,7 +151,11 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
         await interaction.editReply(
-            `Your time on ${track} on 150cc NITA is ${convertMs(time)}. \nYour time is ${convertMs(current.nita150[index]- data.wr.nita150[index][0])} slower than the world record.`
+            `Your time on ${track} on 150cc NITA is ${convertMs(
+                time
+            )}. \nYour time is ${convertMs(
+                current.nita150[index] - data.wr.nita150[index][0]
+            )} slower than the world record.`
         );
         return;
     }
@@ -288,7 +292,13 @@ client.on('interactionCreate', async (interaction) => {
         current.ta150[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
-            `Congrats! Set your time on ${track} on 150cc TA to ${convertMs(time)}.\nYou improved your time by ${convertMs(pastTime-current.ta150[index])}!\nYour time is slower than the WR by ${convertMs(time - data.wr.ta150[index][0])}!`
+            `Congrats! Set your time on ${track} on 150cc TA to ${convertMs(
+                time
+            )}.\nYou improved your time by ${convertMs(
+                pastTime - current.ta150[index]
+            )}!\nYour time is slower than the WR by ${convertMs(
+                time - data.wr.ta150[index][0]
+            )}!`
         );
     }
     if (command === 'ta150' && subcommand === 'show') {
@@ -368,7 +378,13 @@ client.on('interactionCreate', async (interaction) => {
         current.ta200[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
-            `Set your time on ${track} on 200cc TA to ${convertMs(time)}`
+            `Congrats! Set your time on ${track} on 2000cc TA to ${convertMs(
+                time
+            )}.\nYou improved your time by ${convertMs(
+                pastTime - current.ta200[index]
+            )}!\nYour time is slower than the WR by ${convertMs(
+                time - data.wr.ta200[index][0]
+            )}!`
         );
     }
     if (command === 'ta200' && subcommand === 'show') {
