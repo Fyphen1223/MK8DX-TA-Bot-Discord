@@ -35,7 +35,7 @@ client.on('ready', () => {
     redis.connect();
 });
 
-redis.on('ready', () => {
+redis.on('ready', async() => {
     console.log('The Database is ready');
 });
 redis.on('error', (err) => {
@@ -284,10 +284,11 @@ client.on('interactionCreate', async (interaction) => {
             );
             return;
         }
+        let pastTime = current.ta150[index];
         current.ta150[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
-            `Set your time on ${track} on 150cc TA to ${convertMs(time)}`
+            `Congrats! Set your time on ${track} on 150cc TA to ${convertMs(time)}.\nYou improved your time by ${convertMs(pastTime-current.ta150[index])}!\nYour time is slower than the WR by ${convertMs(time - data.wr.ta150[index][0])}!`
         );
     }
     if (command === 'ta150' && subcommand === 'show') {
