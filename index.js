@@ -6,6 +6,7 @@ const data = require('./data/latest.json');
 const { convertMs, convertToMs } = require('./util/util');
 
 const { createClient } = require('redis');
+const { EmbedBuilder } = require('discord.js');
 const redis = createClient({
     password: process.env.REDISPASS,
     socket: {
@@ -317,6 +318,23 @@ client.on('interactionCreate', async (interaction) => {
             );
             return;
         }
+        const embed = new EmbedBuilder()
+        .setTitle(`MK8DX Time Attack - ${track}`)
+        .addFields(
+            {
+                name: 'Your Time',
+                value: convertMs(time)
+            },
+            {
+                name: 'WR',
+                value: convertMs(current.ta150[index])
+            },
+            {
+                name: 'Difference',
+                value: convertMs(current.ta150[index] - data.wr.ta150[index][0])
+            }
+        )
+        .setTimestamp();
         await interaction.editReply(
             `Your time on ${track} on 150cc TA is ${convertMs(
                 time
