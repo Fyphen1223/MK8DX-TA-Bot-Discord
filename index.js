@@ -50,8 +50,6 @@ client.on('interactionCreate', async (interaction) => {
 		await redis.set(interaction.user.id, JSON.stringify(data.default));
 	current = JSON.parse(await redis.get(interaction.user.id));
 	const command = interaction.commandName;
-	// eslint-disable-next-line no-unused-vars
-	const subcommand = interaction.options.getSubcommand();
 	if (
 		command === 'nita150' ||
 		command === 'nita200' ||
@@ -84,28 +82,24 @@ client.on('interactionCreate', async (interaction) => {
 	if (command === 'nita150' && subcommand === 'register') {
 		const track = interaction.options.getString('track');
 		let time = interaction.options.getString('time');
-		if (!convertToMs(time)) {
-			await interaction.reply('Format is illegal.');
-			return;
-		}
 		time = convertToMs(time);
 		await interaction.deferReply();
 		let current = await redis.get(interaction.user.id);
 		if (!current)
 			await redis.set(interaction.user.id, JSON.stringify(data.default));
 		current = JSON.parse(await redis.get(interaction.user.id));
+		if (!time) {
+			await interaction.editReply(data.messages[current.lang].illegalformat);
+			return;
+		}
 		if (data.tracks[current.lang].indexOf(track) === -1) {
-			await interaction.editReply('The track does not exist.');
+			await interaction.editReply(data.messages[current.lang].tracknotexists);
 			return;
 		}
 		let index = data.tracks[current.lang].indexOf(track);
 		index++;
 		if (data.wr.nita150[index][0] >= time) {
-			await interaction.editReply(
-				`Your time is faster than current WR. Current WR: ${convertMs(
-					data.wr.ta150[index][0]
-				)}\nPlease submit your WR on https://mkwrs.com/mk8dx/`
-			);
+			await interaction.editReply(`${data.messages[current.lang].fasterthanwr}${convertMs(data.wr.nita150[index][0])}`);
 			return;
 		}
 		if (!current.nita150[index]) {
@@ -178,28 +172,24 @@ client.on('interactionCreate', async (interaction) => {
 	if (command === 'nita200' && subcommand === 'register') {
 		const track = interaction.options.getString('track');
 		let time = interaction.options.getString('time');
-		if (!convertToMs(time)) {
-			await interaction.reply('Format is illegal.');
-			return;
-		}
 		time = convertToMs(time);
 		await interaction.deferReply();
 		let current = await redis.get(interaction.user.id);
 		if (!current)
 			await redis.set(interaction.user.id, JSON.stringify(data.default));
 		current = JSON.parse(await redis.get(interaction.user.id));
+		if (!time) {
+			await interaction.editReply(data.messages[current.lang].illegalformat);
+			return;
+		}
 		if (data.tracks[current.lang].indexOf(track) === -1) {
-			await interaction.editReply('The track does not exist.');
+			await interaction.editReply(data.messages[current.lang].tracknotexists);
 			return;
 		}
 		let index = data.tracks[current.lang].indexOf(track);
 		index++;
 		if (data.wr.ta200[index][0] >= time) {
-			await interaction.editReply(
-				`Your time is faster than current WR. Current WR: ${convertMs(
-					data.wr.ta200[index][0]
-				)}\nPlease submit your WR on https://mkwrs.com/mk8dx/`
-			);
+			await interaction.editReply(`${data.messages[current.lang].fasterthanwr}${convertMs(data.wr.nita200[index][0])}`);
 			return;
 		}
 		if (!current.ta150[index]) {
@@ -241,9 +231,7 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.nita200[index];
 		if (!time) {
-			await interaction.editReply(
-				'You haven\'t registered this track\'s time.'
-			);
+			await interaction.editReply(data.messages[current.lang].notregistered);
 			return;
 		}
 		const embed = new EmbedBuilder()
@@ -274,28 +262,24 @@ client.on('interactionCreate', async (interaction) => {
 	if (command === 'ta150' && subcommand === 'register') {
 		const track = interaction.options.getString('track');
 		let time = interaction.options.getString('time');
-		if (!convertToMs(time)) {
-			await interaction.reply('Format is illegal.');
-			return;
-		}
 		time = convertToMs(time);
 		await interaction.deferReply();
 		let current = await redis.get(interaction.user.id);
 		if (!current)
 			await redis.set(interaction.user.id, JSON.stringify(data.default));
 		current = JSON.parse(await redis.get(interaction.user.id));
+		if (!time) {
+			await interaction.editReply(data.messages[current.lang].illegalformat);
+			return;
+		}
 		if (data.tracks[current.lang].indexOf(track) === -1) {
-			await interaction.editReply('The track does not exist.');
+			await interaction.editReply(data.messages[current.lang].tracknotexists);
 			return;
 		}
 		let index = data.tracks[current.lang].indexOf(track);
 		index++;
 		if (data.wr.ta150[index][0] >= time) {
-			await interaction.editReply(
-				`Your time is faster than current WR. Current WR: ${convertMs(
-					data.wr.ta150[index][0]
-				)}\nPlease submit your WR on https://mkwrs.com/mk8dx/`
-			);
+			await interaction.editReply(`${data.messages[current.lang].fasterthanwr}${convertMs(data.wr.ta150[index][0])}`);
 			return;
 		}
 		if (!current.ta150[index]) {
@@ -344,9 +328,7 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.ta150[index];
 		if (!time) {
-			await interaction.editReply(
-				'You haven\'t registered this track\'s time.'
-			);
+			await interaction.editReply(data.messages[current.lang].notregistered);
 			return;
 		}
 		const embed = new EmbedBuilder()
@@ -377,28 +359,24 @@ client.on('interactionCreate', async (interaction) => {
 	if (command === 'ta200' && subcommand === 'register') {
 		const track = interaction.options.getString('track');
 		let time = interaction.options.getString('time');
-		if (!convertToMs(time)) {
-			await interaction.reply('Format is illegal.');
-			return;
-		}
 		time = convertToMs(time);
 		await interaction.deferReply();
 		let current = await redis.get(interaction.user.id);
 		if (!current)
 			await redis.set(interaction.user.id, JSON.stringify(data.default));
 		current = JSON.parse(await redis.get(interaction.user.id));
+		if (!time) {
+			await interaction.editReply(data.messages[current.lang].illegalformat);
+			return;
+		}
 		if (data.tracks[current.lang].indexOf(track) === -1) {
-			await interaction.editReply('The track does not exist.');
+			await interaction.editReply(data.messages[current.lang].tracknotexists);
 			return;
 		}
 		let index = data.tracks[current.lang].indexOf(track);
 		index++;
 		if (data.wr.ta200[index][0] >= time) {
-			await interaction.editReply(
-				`Your time is faster than current WR. Current WR: ${convertMs(
-					data.wr.ta200[index][0]
-				)}\nPlease submit your WR on https://mkwrs.com/mk8dx/`
-			);
+			await interaction.editReply(`${data.messages[current.lang].fasterthanwr}${convertMs(data.wr.ta200[index][0])}`);
 			return;
 		}
 		if (!current.ta200[index]) {
@@ -447,9 +425,7 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.ta200[index];
 		if (!time) {
-			await interaction.editReply(
-				'You haven\'t registered this track\'s time.'
-			);
+			await interaction.editReply(data.messages[current.lang].notregistered);
 			return;
 		}
 		const embed = new EmbedBuilder()
