@@ -696,18 +696,21 @@
             "illegalformat": "Invalid time format.",
             "tracknotexists": "Track doesn't exist.",
             "sameasbest": "Time is the same as the best time.",
-            "fasterthanwr": "Your time is faster than current WR. \nPlease submit your WR on https://mkwrs.com/mk8dx/ Current WR:",
+            "fasterthanwr": "Your time is faster than current WR. \nPlease submit your WR on https://mkwrs.com/mk8dx/ Current WR: ",
             "difference": "Difference",
-            "yourtime": "Your time"
+            "yourtime": "Your time",
+            "slowerthanbest": "Your time is slower than your best time. Your best: "
+            
         },
         "ja": {
             "notregistered": "このトラックでのタイムが未申請です。",
             "illegalformat": "タイムのフォーマットが無効です。",
             "tracknotexists": "トラックが存在しません。",
             "sameasbest": "ベストタイムと同じです。",
-            "fasterthanwr": "あなたのタイムは現在のWRより速いです。\nhttps://mkwrs.com/mk8dx/ であなたのタイムを申請してください。 WR:",
+            "fasterthanwr": "あなたのタイムは現在のWRより速いです。\nhttps://mkwrs.com/mk8dx/ であなたのタイムを申請してください。 WR: ",
             "difference": "差",
-            "yourtime": "あなたのタイム"
+            "yourtime": "あなたのタイム",
+            "slowerthanbest": "あなたのタイムはあなたのベストタイムより遅いです。ベスト: "
         }
     },
     "wr": {

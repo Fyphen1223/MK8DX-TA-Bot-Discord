@@ -151,7 +151,7 @@ client.on('interactionCreate', async (interaction) => {
 			})
 			.addFields(
 				{
-					name: 'Your Time',
+					name: data.messages[current.lang].yourtime,
 					value: `${convertMs(time)} - ${getDrop(time, data.wr.nita150[index][0])} drop`
 				},
 				{
@@ -159,7 +159,7 @@ client.on('interactionCreate', async (interaction) => {
 					value: `${convertMs(data.wr.nita150[index][0])} by ${data.wr.nita150[index][1]}`
 				},
 				{
-					name: 'Difference',
+					name: data.messages[current.lang].difference,
 					value: convertMs(current.nita150[index] - data.wr.nita150[index][0])
 				}
 			)
@@ -241,7 +241,7 @@ client.on('interactionCreate', async (interaction) => {
 			})
 			.addFields(
 				{
-					name: 'Your Time',
+					name: data.messages[current.lang].yourtime,
 					value: `${convertMs(time)} - ${getDrop(time, data.wr.nita200[index][0])} drop`
 				},
 				{
@@ -249,7 +249,7 @@ client.on('interactionCreate', async (interaction) => {
 					value: `${convertMs(data.wr.nita200[index][0])} by ${data.wr.nita200[index][1]}`
 				},
 				{
-					name: 'Difference',
+					name: data.messages[current.lang].difference,
 					value: convertMs(current.nita200[index] - data.wr.nita200[index][0])
 				}
 			)
@@ -338,7 +338,7 @@ client.on('interactionCreate', async (interaction) => {
 			})
 			.addFields(
 				{
-					name: 'Your Time',
+					name: data.messages[current.lang].yourtime,
 					value: `${convertMs(time)} - ${getDrop(time, data.wr.ta150[index][0])} drop`
 				},
 				{
@@ -346,7 +346,7 @@ client.on('interactionCreate', async (interaction) => {
 					value: `${convertMs(data.wr.ta150[index][0])} by ${data.wr.ta150[index][1]}`
 				},
 				{
-					name: 'Difference',
+					name: data.messages[current.lang].difference,
 					value: convertMs(current.ta150[index] - data.wr.ta150[index][0])
 				}
 			)
@@ -435,7 +435,7 @@ client.on('interactionCreate', async (interaction) => {
 			})
 			.addFields(
 				{
-					name: 'Your Time',
+					name: data.messages[current.lang].yourtime,
 					value: `${convertMs(time)} - ${getDrop(time, data.wr.ta200[index][0])} drop`
 				},
 				{
@@ -443,7 +443,7 @@ client.on('interactionCreate', async (interaction) => {
 					value: `${convertMs(data.wr.ta200[index][0])} by ${data.wr.ta200[index][1]}`
 				},
 				{
-					name: 'Difference',
+					name: data.messages[current.lang].difference,
 					value: convertMs(current.ta200[index] - data.wr.ta200[index][0])
 				}
 			)
