@@ -690,6 +690,14 @@
             "96": ""
         }
     },
+    "messages": {
+        "en": {
+            "notregistered": "You haven't registered this track's time yet."
+        },
+        "ja": {
+            "notregistered": "このトラックでのタイムが未申請です。"
+        }
+    },
     "wr": {
         "nita150": {
             "1":[99745,"かたゆ"],

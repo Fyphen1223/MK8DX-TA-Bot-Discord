@@ -6,26 +6,26 @@ async function update() {
 	const splittedData = data.data.split('<tr><td rowspan=8 style="padding-left:0px; padding-right:0px; width:34px; background-color:rgba(232, 82, 88, 0.5);"><center><img src="cups/mushroom.webp" height="32px" width="32px"></center></td><td colspan=2 rowspan=2><table class= "track"><tr><td rowspan=2><a href = "display.php?track=Mario+Kart+Stadium">Mario Kart Stadium</a></td><td class="lap">')
 		.slice(1)
 		.join('')
-		.split('        </tr>\n    <tr>')[0]
+		.split('        </tr>\n    <tr>')[0];
 
-	const lines = splittedData.split('\n')
+	const lines = splittedData.split('\n');
 
 	function CCParse(line) {
-		return line.split('<small>')[1].split('</small>')[0]
+		return line.split('<small>')[1].split('</small>')[0];
 	}
 
 	function betweenTD(line) {
-		return line.split('<td>')[1].split('</td>')[0]
+		return line.split('<td>')[1].split('</td>')[0];
 	}
 
-	const infoLines = 9
-	const jumpIndex = 2 + 2
+	const infoLines = 9;
+	const jumpIndex = 2 + 2;
 
-	let lineIndex = 2
-	let lastCC = -1
+	let lineIndex = 2;
+	let lastCC = -1;
 
-	const arr = []
-	let arrIndex = 0
+	const arr = [];
+	let arrIndex = 0;
 
 	while (lineIndex <= lines.length) {
 		arr[arrIndex] = {
@@ -40,19 +40,19 @@ async function update() {
 			vehicle: betweenTD(lines[lineIndex + 6]),
 			tires: betweenTD(lines[lineIndex + 7]),
 			glider: betweenTD(lines[lineIndex + 8])
-		}
+		};
 
 		if ((arrIndex + 1) % 2 == 1 && lines[lineIndex - 2].includes('cc')) {
-			arr[arrIndex].cc = CCParse(lines[lineIndex - 2])
-			arr[arrIndex + 1] = { cc: (lastCC = CCParse(lines[lineIndex - 1])) }
+			arr[arrIndex].cc = CCParse(lines[lineIndex - 2]);
+			arr[arrIndex + 1] = { cc: (lastCC = CCParse(lines[lineIndex - 1])) };
 		} else {
 			if ((arrIndex + 1) % 2 == 1) {
-				arr[arrIndex + 1] = { cc: lastCC }
+				arr[arrIndex + 1] = { cc: lastCC };
 			}
 		}
 
-		lineIndex += jumpIndex + infoLines // 4 + 9
-		arrIndex++
+		lineIndex += jumpIndex + infoLines;// 4 + 9;
+		arrIndex++;
 	}
 
 	let i = 1;
@@ -77,7 +77,7 @@ function convertIntoMs(time) {
 		var milliseconds = parseInt(match[3]);
 		return (minutes * 60 + seconds) * 1000 + milliseconds;
 	} else {
-		return "Invalid time format";
+		return 'Invalid time format';
 	}
 }
 

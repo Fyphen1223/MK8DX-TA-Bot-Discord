@@ -1,9 +1,9 @@
 require('dotenv').config();
 
 const discord = require('discord.js');
-const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const data = require('./data/latest.json');
 const { convertMs, convertToMs, getDrop } = require('./util/util');
+const process = require('process');
 
 const { createClient } = require('redis');
 const { EmbedBuilder } = require('discord.js');
@@ -50,6 +50,7 @@ client.on('interactionCreate', async (interaction) => {
 		await redis.set(interaction.user.id, JSON.stringify(data.default));
 	current = JSON.parse(await redis.get(interaction.user.id));
 	const command = interaction.commandName;
+	// eslint-disable-next-line no-unused-vars
 	const subcommand = interaction.options.getSubcommand();
 	if (
 		command === 'nita150' ||
@@ -146,9 +147,7 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.nita150[index];
 		if (!time) {
-			await interaction.editReply(
-				`You haven't registered this track's time.`
-			);
+			await interaction.editReply(data.messages[current.lang].notregistered);
 			return;
 		}
 		const embed = new EmbedBuilder()
@@ -243,7 +242,7 @@ client.on('interactionCreate', async (interaction) => {
 		const time = current.nita200[index];
 		if (!time) {
 			await interaction.editReply(
-				`You haven't registered this track's time.`
+				'You haven\'t registered this track\'s time.'
 			);
 			return;
 		}
@@ -346,7 +345,7 @@ client.on('interactionCreate', async (interaction) => {
 		const time = current.ta150[index];
 		if (!time) {
 			await interaction.editReply(
-				`You haven't registered this track's time.`
+				'You haven\'t registered this track\'s time.'
 			);
 			return;
 		}
@@ -425,6 +424,7 @@ client.on('interactionCreate', async (interaction) => {
 			return;
 		}
 		current.ta200[index] = time;
+		const pastTime = current.ta200[index];
 		await redis.set(interaction.user.id, JSON.stringify(current));
 		await interaction.editReply(
 			`Congrats! Set your time on ${track} on 2000cc TA to ${convertMs(
@@ -448,7 +448,7 @@ client.on('interactionCreate', async (interaction) => {
 		const time = current.ta200[index];
 		if (!time) {
 			await interaction.editReply(
-				`You haven't registered this track's time.`
+				'You haven\'t registered this track\'s time.'
 			);
 			return;
 		}

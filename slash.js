@@ -1,4 +1,5 @@
 require('dotenv').config();
+const process = require('process');
 const { REST, SlashCommandBuilder, Routes } = require('discord.js');
 const start = new Date();
 const commands = [
