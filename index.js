@@ -188,33 +188,33 @@ client.on('interactionCreate', async (interaction) => {
 		}
 		let index = data.tracks[current.lang].indexOf(track);
 		index++;
-		if (data.wr.ta200[index][0] >= time) {
+		if (data.wr.nita200[index][0] >= time) {
 			await interaction.editReply(`${data.messages[current.lang].fasterthanwr}${convertMs(data.wr.nita200[index][0])}`);
 			return;
 		}
-		if (!current.ta150[index]) {
-			current.ta150[index] = time;
+		if (!current.nita200[index]) {
+			current.nita200[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
 				`Set your time on ${track} on 200cc NITA to ${convertMs(time)}`
 			);
 			return;
 		}
-		if (current.ta200[index] < time) {
+		if (current.nita200[index] < time) {
 			await interaction.editReply(
 				`The time you entered is slower than your best. Your best is ${convertMs(
-					current.ta200[index]
+					current.nita200[index]
 				)}`
 			);
 			return;
 		}
-		if (current.ta200[index] == time) {
+		if (current.nita200[index] == time) {
 			await interaction.editReply(
 				'The time you entered is the same as your best.'
 			);
 			return;
 		}
-		current.ta200[index] = time;
+		current.nita200[index] = time;
 		await redis.set(interaction.user.id, JSON.stringify(current));
 		await interaction.editReply(
 			`Set your time on ${track} on 200cc NITA to ${convertMs(time)}`
