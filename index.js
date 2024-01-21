@@ -3,7 +3,7 @@ require('dotenv').config();
 const discord = require('discord.js');
 const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const data = require('./data/latest.json');
-const { convertMs, convertToMs } = require('./util/util');
+const { convertMs, convertToMs, getDrop } = require('./util/util');
 
 const { createClient } = require('redis');
 const { EmbedBuilder } = require('discord.js');
@@ -151,13 +151,29 @@ client.on('interactionCreate', async (interaction) => {
 			);
 			return;
 		}
-		await interaction.editReply(
-			`Your time on ${track} on 150cc NITA is ${convertMs(
-				time
-			)}. \nYour time is ${convertMs(
-				current.nita150[index] - data.wr.nita150[index][0]
-			)} slower than the world record.`
-		);
+		const embed = new EmbedBuilder()
+			.setAuthor({
+				name: ` | MK8DX NITA on 150cc - ${track}`,
+				iconURL: interaction.user.avatarURL()
+			})
+			.addFields(
+				{
+					name: 'Your Time',
+					value: `${convertMs(time)} - ${getDrop(time, data.wr.nita150[index][0])} drop`
+				},
+				{
+					name: 'WR',
+					value: `${convertMs(data.wr.nita150[index][0])} by ${data.wr.nita150[index][1]}`
+				},
+				{
+					name: 'Difference',
+					value: convertMs(current.nita150[index] - data.wr.nita150[index][0])
+				}
+			)
+			.setTimestamp();
+		await interaction.editReply({
+			embeds: [embed]
+		});
 		return;
 	}
 	if (command === 'nita200' && subcommand === 'register') {
@@ -231,13 +247,29 @@ client.on('interactionCreate', async (interaction) => {
 			);
 			return;
 		}
-		await interaction.editReply(
-			`Your time on ${track} on 200cc NITA is ${convertMs(
-				time
-			)}. \nYour time is ${convertMs(
-				current.nita200[index] - data.wr.nita200[index][0]
-			)} slower than the world record.`
-		);
+		const embed = new EmbedBuilder()
+			.setAuthor({
+				name: ` | MK8DX NITA on 200cc - ${track}`,
+				iconURL: interaction.user.avatarURL()
+			})
+			.addFields(
+				{
+					name: 'Your Time',
+					value: `${convertMs(time)} - ${getDrop(time, data.wr.nita200[index][0])} drop`
+				},
+				{
+					name: 'WR',
+					value: `${convertMs(data.wr.nita200[index][0])} by ${data.wr.nita200[index][1]}`
+				},
+				{
+					name: 'Difference',
+					value: convertMs(current.nita200[index] - data.wr.nita200[index][0])
+				}
+			)
+			.setTimestamp();
+		await interaction.editReply({
+			embeds: [embed]
+		});
 		return;
 	}
 	if (command === 'ta150' && subcommand === 'register') {
@@ -319,15 +351,18 @@ client.on('interactionCreate', async (interaction) => {
 			return;
 		}
 		const embed = new EmbedBuilder()
-			.setTitle(`MK8DX Time Attack - ${track}`)
+			.setAuthor({
+				name: ` | MK8DX TA on 150cc - ${track}`,
+				iconURL: interaction.user.avatarURL()
+			})
 			.addFields(
 				{
 					name: 'Your Time',
-					value: convertMs(time)
+					value: `${convertMs(time)} - ${getDrop(time, data.wr.ta150[index][0])} drop`
 				},
 				{
 					name: 'WR',
-					value: convertMs(current.ta150[index])
+					value: `${convertMs(data.wr.ta150[index][0])} by ${data.wr.ta150[index][1]}`
 				},
 				{
 					name: 'Difference',
@@ -335,13 +370,9 @@ client.on('interactionCreate', async (interaction) => {
 				}
 			)
 			.setTimestamp();
-		await interaction.editReply(
-			`Your time on ${track} on 150cc TA is ${convertMs(
-				time
-			)}. \nYour time is ${convertMs(
-				current.ta150[index] - data.wr.ta150[index][0]
-			)} slower than the world record.`
-		);
+		await interaction.editReply({
+			embeds: [embed]
+		});
 		return;
 	}
 	if (command === 'ta200' && subcommand === 'register') {
@@ -421,13 +452,29 @@ client.on('interactionCreate', async (interaction) => {
 			);
 			return;
 		}
-		await interaction.editReply(
-			`Your time on ${track} on 200cc TA is ${convertMs(
-				time
-			)}. \nYour time is ${convertMs(
-				current.ta200[index] - data.wr.ta200[index][0]
-			)} slower than the world record.`
-		);
+		const embed = new EmbedBuilder()
+			.setAuthor({
+				name: ` | MK8DX TA on 200cc - ${track}`,
+				iconURL: interaction.user.avatarURL()
+			})
+			.addFields(
+				{
+					name: 'Your Time',
+					value: `${convertMs(time)} - ${getDrop(time, data.wr.ta200[index][0])} drop`
+				},
+				{
+					name: 'WR',
+					value: `${convertMs(data.wr.ta200[index][0])} by ${data.wr.ta200[index][1]}`
+				},
+				{
+					name: 'Difference',
+					value: convertMs(current.ta200[index] - data.wr.ta200[index][0])
+				}
+			)
+			.setTimestamp();
+		await interaction.editReply({
+			embeds: [embed]
+		});
 		return;
 	}
 });
