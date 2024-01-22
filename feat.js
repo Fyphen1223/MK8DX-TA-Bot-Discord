@@ -46,16 +46,22 @@ async function getTime(auth) {
     const sheets = google.sheets({ version: 'v4', auth });
     const res = await sheets.spreadsheets.values.get({
         spreadsheetId: '1N-qbsQtT4G-2kMjQRQIKoRrh0Tw4424evuK9xnSSDpo',
-        range: '150cc (Meta)!F7:G7',
+        range: `150cc (Meta)!F7:G${getTrackNumberOnSheet(3)}`,
     });
     const rows = res.data.values;
     console.log(rows);
 }
 
-authorize().then(listMajors).catch(console.error);
+authorize().then(getTime).catch(console.error);
 
 //7, 25,43
-//1, 19, 36
+//1のとき7, 2の時25, 3の時43...を返すようなJSの関数を書いてください
+
+function getTrackInt(int) {
+    return 18 * int - 11;
+}
+
 function getTrackNumberOnSheet(int) {
     const row = Math.ceil(int / 4);
+    return getTrackInt(row);
 }
