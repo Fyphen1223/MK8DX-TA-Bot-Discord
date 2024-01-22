@@ -33,7 +33,8 @@ const client = new discord.Client({
 
 const http = require('http');
 const server = http.createServer((req, res) => {
-	res.sendDate('Donate me :D');
+	res.end('Donate me :D');
+	console.log('The data came');
 	return;
 });
 
