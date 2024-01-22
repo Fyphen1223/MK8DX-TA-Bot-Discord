@@ -41,7 +41,7 @@ const server = http.createServer((req, res) => {
 client.on('ready', () => {
 	console.log('Logged in');
 	if(process.env.WAKEMEUP == 1) {
-		server.listen(8080, () => {
+		server.listen(10000, () => {
 			console.log('Server is ready');
 		});
 	}
