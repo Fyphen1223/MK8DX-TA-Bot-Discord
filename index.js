@@ -31,8 +31,19 @@ const client = new discord.Client({
 	],
 });
 
+const http = require('http');
+const server = http.createServer((req, res) => {
+	res.sendDate('Donate me :D');
+	return;
+});
+
 client.on('ready', () => {
 	console.log('Logged in');
+	if(process.env.WAKEMEUP == 1) {
+		server.listen(8080, () => {
+			console.log('Server is ready');
+		});
+	}
 	redis.connect();
 });
 
