@@ -46,7 +46,7 @@ async function getTime(auth) {
     const sheets = google.sheets({ version: 'v4', auth });
     const res = await sheets.spreadsheets.values.get({
         spreadsheetId: '1N-qbsQtT4G-2kMjQRQIKoRrh0Tw4424evuK9xnSSDpo',
-        range: `150cc (Meta)!F7:G${getTrackNumberOnSheet(3)}`,
+        range: `150cc (Meta)!F7:ZZ7`,
     });
     const rows = res.data.values;
     console.log(rows);
