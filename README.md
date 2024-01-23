@@ -1,6 +1,6 @@
 # MK8DXBotDiscord
 
-[![DeepScan grade](https://deepscan.io/api/teams/23064/projects/26358/branches/836700/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=23064&pid=26358&bid=836700)
+[![DeepScan grade](https://deepscan.io/api/teams/23064/projects/26359/branches/836702/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=23064&pid=26359&bid=836702)
 
 
 A Discord bot that register, inquire, or show MK8DX records.
