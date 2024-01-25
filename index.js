@@ -91,9 +91,14 @@ client.on('interactionCreate', async (interaction) => {
 client.on('interactionCreate', async (interaction) => {
     if (interaction.isAutocomplete()) return;
     const command = interaction.commandName;
-    const subcommand = interaction.options.getSubcommand();
+    let subcommand =  null;
+    try {
+        subcommand = interaction.options.getSubcommand();
+    } catch(err) {
+
+    }
     if(command === 'ping') {
-        await interaction.reply(`Working! Current bot's ping is ${client.ws.ping}!`);
+        await interaction.reply(`Working! Current bot's ping is ${client.ws.ping}ms!`);
         return;
     }
     if (command === 'config' && subcommand === 'lang') {
