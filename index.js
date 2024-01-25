@@ -66,10 +66,6 @@ redis.on('error', (err) => {
 
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isAutocomplete()) return;
-    if(interaction.commandName === 'ping') {
-        await interaction.reply(`Working! Current bot's ping is ${client.ws.ping}!`);
-        return;
-    }
     let current = await redis.get(interaction.user.id);
     if (!current)
         await redis.set(interaction.user.id, JSON.stringify(data.default));
@@ -96,6 +92,10 @@ client.on('interactionCreate', async (interaction) => {
     if (interaction.isAutocomplete()) return;
     const command = interaction.commandName;
     const subcommand = interaction.options.getSubcommand();
+    if(command === 'ping') {
+        await interaction.reply(`Working! Current bot's ping is ${client.ws.ping}!`);
+        return;
+    }
     if (command === 'config' && subcommand === 'lang') {
         await interaction.deferReply();
         const lang = interaction.options.getString('lang');
