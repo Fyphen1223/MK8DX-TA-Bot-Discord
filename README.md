@@ -91,11 +91,12 @@ Contributions are what make the open source community such an amazing place to b
 
 ## License
 
-See [LICENSE](https://github.com/Fyphen1223/MK8DXBotDiscord/blob/main/LICENSE.md) for more information.
+See [LICENSE](https://github.com/Fyphen1223/MK8DXBotDiscord/blob/main/LICENSE) for more information.
 
 ## Authors
 
 * **Fyphen1223** - *Fyphen* - [Fyphen1223](https://github.com/Fyphen1223) - *Build base of repo*
+* **ThePedroo** - *Pedroo* - [ThePedroo](https://github.com/ThePedroo) - *Build auto-update*
 
 ## Acknowledgements
 
