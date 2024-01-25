@@ -18,6 +18,10 @@ Official instance: [Invite from here](https://discord.com/api/oauth2/authorize?c
 
 ![Contributors](https://img.shields.io/github/contributors/Fyphen1223/MK8DXBotDiscord?color=dark-green) ![Forks](https://img.shields.io/github/forks/Fyphen1223/MK8DXBotDiscord?style=social) ![Stargazers](https://img.shields.io/github/stars/Fyphen1223/MK8DXBotDiscord?style=social) ![Issues](https://img.shields.io/github/issues/Fyphen1223/MK8DXBotDiscord) ![License](https://img.shields.io/github/license/Fyphen1223/MK8DXBotDiscord) [![DeepScan grade](https://deepscan.io/api/teams/23064/projects/26359/branches/836702/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=23064&pid=26359&bid=836702)
 
+## Star History
+
+![Star History](https://seladb.github.io/StarTrack-js/#/preload?r=Fyphen1223,MK8DXBotDiscord)
+
 ## Table Of Contents
 
 * [About the Project](#about-the-project)
