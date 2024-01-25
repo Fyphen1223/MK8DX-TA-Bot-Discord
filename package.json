@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/local-auth": "3.0.1",
-    "axios": "^1.6.5",
+    "axios": "^1.6.6",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.1",
     "googleapis": "^131.0.0",
