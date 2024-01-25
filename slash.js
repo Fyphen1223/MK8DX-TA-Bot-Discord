@@ -12,6 +12,20 @@ const commands = [
 		.setDMPermission(true)
 		.addSubcommand((subcommand) =>
 			subcommand
+				.setName('list')
+				.setDescription('Shows all tracks\' time'))
+		.addSubcommand((subcommand) =>
+			subcommand
+				.setName('delete')
+				.setDescription('Delete your time on track')
+				.addStringOption((option) =>
+					option.setName('track')
+						.setDescription('Track name')
+						.setAutocomplete(true)
+						.setRequired(true))
+		)
+		.addSubcommand((subcommand) =>
+			subcommand
 				.setName('register')
 				.setDescription('Register your time')
 				.addStringOption((option) =>
@@ -48,6 +62,20 @@ const commands = [
 		.setName('nita200')
 		.setDescription('No Item Time Attack 200cc')
 		.setDMPermission(true)
+		.addSubcommand((subcommand) =>
+			subcommand
+				.setName('list')
+				.setDescription('Shows all tracks\' time'))
+		.addSubcommand((subcommand) =>
+			subcommand
+				.setName('delete')
+				.setDescription('Delete your time on track')
+				.addStringOption((option) =>
+					option.setName('track')
+						.setDescription('Track name')
+						.setAutocomplete(true)
+						.setRequired(true))
+		)
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('register')
@@ -88,6 +116,20 @@ const commands = [
 		.setDMPermission(true)
 		.addSubcommand((subcommand) =>
 			subcommand
+				.setName('list')
+				.setDescription('Shows all tracks\' time'))
+		.addSubcommand((subcommand) =>
+			subcommand
+				.setName('delete')
+				.setDescription('Delete your time on track')
+				.addStringOption((option) =>
+					option.setName('track')
+						.setDescription('Track name')
+						.setAutocomplete(true)
+						.setRequired(true))
+		)
+		.addSubcommand((subcommand) =>
+			subcommand
 				.setName('register')
 				.setDescription('Register your time')
 				.addStringOption((option) =>
@@ -126,6 +168,20 @@ const commands = [
 		.setDMPermission(true)
 		.addSubcommand((subcommand) =>
 			subcommand
+				.setName('list')
+				.setDescription('Shows all tracks\' time'))
+		.addSubcommand((subcommand) =>
+			subcommand
+				.setName('delete')
+				.setDescription('Delete your time on track')
+				.addStringOption((option) =>
+					option.setName('track')
+						.setDescription('Track name')
+						.setAutocomplete(true)
+						.setRequired(true))
+		)
+		.addSubcommand((subcommand) =>
+			subcommand
 				.setName('register')
 				.setDescription('Register your time')
 				.addStringOption((option) =>
@@ -162,6 +218,16 @@ const commands = [
 		.setName('config')
 		.setDescription('Configure your settings')
 		.setDMPermission(true)
+		.addSubcommand((subcommand) =>
+			subcommand
+				.setName('delete')
+				.setDescription('Delete your time on track')
+				.addStringOption((option) =>
+					option.setName('track')
+						.setDescription('Track name')
+						.setAutocomplete(true)
+						.setRequired(true))
+		)
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('lang')
