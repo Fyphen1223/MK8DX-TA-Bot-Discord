@@ -162,6 +162,7 @@ client.on('interactionCreate', async (interaction) => {
             );
             return;
         }
+        const pastTime = current.nita150[index];
         current.nita150[index] = time;
         await redis.set(interaction.user.id, JSON.stringify(current));
         await interaction.editReply(
