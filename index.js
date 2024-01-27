@@ -263,9 +263,9 @@ client.on('interactionCreate', async (interaction) => {
                         if (!current.nita150[index]) {
                             return `${index}. ${track} - Not registered`;
                         }
-                        return `${index}. ${track} - ${convertMs(
-                            current.nita150[index]
-                        )}`;
+                        const time = current.nita150[index];
+                        const drop = getDrop(time, data.wr.nita150[index][0]);
+                        return `${index}. ${track} - ${convertMs(time)} - ${drop} drop`;
                     })
                     .join('\n')
             )
@@ -429,9 +429,11 @@ client.on('interactionCreate', async (interaction) => {
                         if (!current.nita200[index]) {
                             return `${index}. ${track} - Not registered`;
                         }
-                        return `${index}. ${track} - ${convertMs(
-                            current.nita200[index]
-                        )}`;
+                        
+                        const time = current.nita200[index];
+                        const wrTime = data.wr.nita200[index][0];
+                        const drop = getDrop(time, wrTime);
+                        return `${index}. ${track} - ${convertMs(time)} (${drop} drop)`;
                     })
                     .join('\n')
             )
@@ -596,9 +598,12 @@ client.on('interactionCreate', async (interaction) => {
                         if (!current.ta150[index]) {
                             return `${index}. ${track} - Not registered`;
                         }
-                        return `${index}. ${track} - ${convertMs(
-                            current.ta150[index]
-                        )}`;
+                        
+                        const time = current.ta150[index];
+                        const wrTime = data.wr.ta150[index][0];
+                        const drop = getDrop(time, wrTime);
+                        
+                        return `${index}. ${track} - ${convertMs(time)} (${drop} drop)`;
                     })
                     .join('\n')
             )
@@ -763,9 +768,11 @@ client.on('interactionCreate', async (interaction) => {
                         if (!current.ta200[index]) {
                             return `${index}. ${track} - Not registered`;
                         }
-                        return `${index}. ${track} - ${convertMs(
-                            current.ta200[index]
-                        )}`;
+                        
+                        const time = current.ta200[index];
+                        const drop = getDrop(time, data.wr.ta200[index][0]);
+                        
+                        return `${index}. ${track} - ${convertMs(time)} (${drop} drop)`;
                     })
                     .join('\n')
             )
