@@ -222,6 +222,59 @@ client.on('interactionCreate', async (interaction) => {
         });
         return;
     }
+    if (command === 'nita150' && subcommand === 'delete') {
+        await interaction.deferReply();
+        const track = interaction.options.getString('track');
+        let current = JSON.parse(await redis.get(interaction.user.id));
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        let index = data.tracks[current.lang].indexOf(track);
+        index++;
+        const time = current.nita150[index];
+        if (!time) {
+            await interaction.editReply(
+                data.messages[current.lang].notregistered
+            );
+            return;
+        }
+        const pastTime = current.nita150[index];
+        delete current.nita150[index];
+        await redis.set(interaction.user.id, JSON.stringify(current));
+        await interaction.editReply(
+            `Deleted your time on ${track} on 150cc NITA. Your time was ${convertMs(pastTime)}`
+        );
+    }
+    if (command === 'nita150' && subcommand === 'list') {
+        await interaction.deferReply();
+        let current = await redis.get(interaction.user.id);
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        const embed = new EmbedBuilder()
+            .setAuthor({
+                name: ` | MK8DX NITA on 150cc`,
+                iconURL: interaction.user.avatarURL(),
+            })
+            .setDescription(
+                data.tracks[current.lang]
+                    .map((track, index) => {
+                        index++;
+                        if (!current.nita150[index]) {
+                            return `${index}. ${track} - Not registered`;
+                        }
+                        return `${index}. ${track} - ${convertMs(
+                            current.nita150[index]
+                        )}`;
+                    })
+                    .join('\n')
+            )
+            .setTimestamp();
+        await interaction.editReply({
+            embeds: [embed],
+        });
+        return;
+    }
     if (command === 'nita200' && subcommand === 'register') {
         const track = interaction.options.getString('track');
         let time = interaction.options.getString('time');
@@ -328,6 +381,59 @@ client.on('interactionCreate', async (interaction) => {
                         current.nita200[index] - data.wr.nita200[index][0]
                     ),
                 }
+            )
+            .setTimestamp();
+        await interaction.editReply({
+            embeds: [embed],
+        });
+        return;
+    }
+    if (command === 'nita200' && subcommand === 'delete') {
+        await interaction.deferReply();
+        const track = interaction.options.getString('track');
+        let current = JSON.parse(await redis.get(interaction.user.id));
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        let index = data.tracks[current.lang].indexOf(track);
+        index++;
+        const time = current.nita200[index];
+        if (!time) {
+            await interaction.editReply(
+                data.messages[current.lang].notregistered
+            );
+            return;
+        }
+        const pastTime = current.nita200[index];
+        delete current.nita200[index];
+        await redis.set(interaction.user.id, JSON.stringify(current));
+        await interaction.editReply(
+            `Deleted your time on ${track} on 200cc NITA. Your time was ${convertMs(pastTime)}`
+        );
+    }
+    if (command === 'nita200' && subcommand === 'list') {
+        await interaction.deferReply();
+        let current = await redis.get(interaction.user.id);
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        const embed = new EmbedBuilder()
+            .setAuthor({
+                name: ` | MK8DX NITA on 200cc`,
+                iconURL: interaction.user.avatarURL(),
+            })
+            .setDescription(
+                data.tracks[current.lang]
+                    .map((track, index) => {
+                        index++;
+                        if (!current.nita200[index]) {
+                            return `${index}. ${track} - Not registered`;
+                        }
+                        return `${index}. ${track} - ${convertMs(
+                            current.nita200[index]
+                        )}`;
+                    })
+                    .join('\n')
             )
             .setTimestamp();
         await interaction.editReply({
@@ -449,6 +555,59 @@ client.on('interactionCreate', async (interaction) => {
         });
         return;
     }
+    if (command === 'ta150' && subcommand === 'delete') {
+        await interaction.deferReply();
+        const track = interaction.options.getString('track');
+        let current = JSON.parse(await redis.get(interaction.user.id));
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        let index = data.tracks[current.lang].indexOf(track);
+        index++;
+        const time = current.ta150[index];
+        if (!time) {
+            await interaction.editReply(
+                data.messages[current.lang].notregistered
+            );
+            return;
+        }
+        const pastTime = current.ta150[index];
+        delete current.ta150[index];
+        await redis.set(interaction.user.id, JSON.stringify(current));
+        await interaction.editReply(
+            `Deleted your time on ${track} on 150cc TA. Your time was ${convertMs(pastTime)}`
+        );
+    }
+    if (command === 'ta150' && subcommand === 'list') {
+        await interaction.deferReply();
+        let current = await redis.get(interaction.user.id);
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        const embed = new EmbedBuilder()
+            .setAuthor({
+                name: ` | MK8DX TA on 150cc`,
+                iconURL: interaction.user.avatarURL(),
+            })
+            .setDescription(
+                data.tracks[current.lang]
+                    .map((track, index) => {
+                        index++;
+                        if (!current.ta150[index]) {
+                            return `${index}. ${track} - Not registered`;
+                        }
+                        return `${index}. ${track} - ${convertMs(
+                            current.ta150[index]
+                        )}`;
+                    })
+                    .join('\n')
+            )
+            .setTimestamp();
+        await interaction.editReply({
+            embeds: [embed],
+        });
+        return;
+    }
     if (command === 'ta200' && subcommand === 'register') {
         const track = interaction.options.getString('track');
         let time = interaction.options.getString('time');
@@ -556,6 +715,59 @@ client.on('interactionCreate', async (interaction) => {
                         current.ta200[index] - data.wr.ta200[index][0]
                     ),
                 }
+            )
+            .setTimestamp();
+        await interaction.editReply({
+            embeds: [embed],
+        });
+        return;
+    }
+    if (command === 'ta200' && subcommand === 'delete') {
+        await interaction.deferReply();
+        const track = interaction.options.getString('track');
+        let current = JSON.parse(await redis.get(interaction.user.id));
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        let index = data.tracks[current.lang].indexOf(track);
+        index++;
+        const time = current.ta200[index];
+        if (!time) {
+            await interaction.editReply(
+                data.messages[current.lang].notregistered
+            );
+            return;
+        }
+        const pastTime = current.ta200[index];
+        delete current.ta200[index];
+        await redis.set(interaction.user.id, JSON.stringify(current));
+        await interaction.editReply(
+            `Deleted your time on ${track} on 200cc TA. Your time was ${convertMs(pastTime)}`
+        );
+    }
+    if (command === 'ta200' && subcommand === 'list') {
+        await interaction.deferReply();
+        let current = await redis.get(interaction.user.id);
+        if (!current)
+            await redis.set(interaction.user.id, JSON.stringify(data.default));
+        current = JSON.parse(await redis.get(interaction.user.id));
+        const embed = new EmbedBuilder()
+            .setAuthor({
+                name: ` | MK8DX TA on 200cc`,
+                iconURL: interaction.user.avatarURL(),
+            })
+            .setDescription(
+                data.tracks[current.lang]
+                    .map((track, index) => {
+                        index++;
+                        if (!current.ta200[index]) {
+                            return `${index}. ${track} - Not registered`;
+                        }
+                        return `${index}. ${track} - ${convertMs(
+                            current.ta200[index]
+                        )}`;
+                    })
+                    .join('\n')
             )
             .setTimestamp();
         await interaction.editReply({
