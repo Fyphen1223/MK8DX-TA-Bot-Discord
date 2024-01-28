@@ -60,11 +60,11 @@ async function update() {
 	let i = 1;
 	while (i <= 96) {
 		record.wr.ta150[i] = [];
-		record.wr.ta150[i].push(convertIntoMs(arr[getRecordInfo(i, 0)].time));
-		record.wr.ta150[i].push(arr[getRecordInfo(i, 0)].user_name);
+		record.wr.ta150[i].push(convertIntoMs(arr[getRecordInfo(i-1, 0)].time));
+		record.wr.ta150[i].push(arr[getRecordInfo(i-1, 0)].user_name);
 		record.wr.ta200[i] = [];
-		record.wr.ta200[i].push(convertIntoMs(arr[getRecordInfo(i, 1)].time));
-		record.wr.ta200[i].push(arr[getRecordInfo(i, 1)].user_name);
+		record.wr.ta200[i].push(convertIntoMs(arr[getRecordInfo(i-1, 1)].time));
+		record.wr.ta200[i].push(arr[getRecordInfo(i-1, 1)].user_name);
 		i++;
 	}
 	fs.writeFileSync('./data/latest.json', JSON.stringify(record));
