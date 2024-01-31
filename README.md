@@ -6,7 +6,7 @@
     A Discord bot that register, inquire, or show MK8DX records.
     <br/>
     <br/>
-    <a href="https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands">View Demo</a>
+    <a href="https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands">View Demo (public instance, extremely unstable)</a>
     .
     <a href="https://github.com/Fyphen1223/MK8DXBotDiscord/issues">Report Bug</a>
     .
