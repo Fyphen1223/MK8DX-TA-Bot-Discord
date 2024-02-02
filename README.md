@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <h3 align="center">MK8DX Bot Discord</h3>
+  <h3 align="center">MK8DX Bot Discord Beta</h3>
 
   <p align="center">
     A Discord bot that register, inquire, or show MK8DX records.
