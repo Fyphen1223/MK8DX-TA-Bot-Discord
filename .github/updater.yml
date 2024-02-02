@@ -2,7 +2,8 @@ name: Update File
 
 on:
   schedule:
-    - cron: '0 * * * *'  # 1時間ごとに実行
+    - cron: '0 * * * *'
+  push:
 
 jobs:
   update-file:
