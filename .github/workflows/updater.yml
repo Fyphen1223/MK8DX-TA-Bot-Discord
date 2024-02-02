@@ -16,8 +16,8 @@ jobs:
       - name: Update File
         run: |
           sed -i "s/Last updated: .*/Last updated: $(date '+%Y-%m-%d %H:%M:%S')/" UPDATE.md
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "fyphensub@gmail.com"
+          git config --global user.name "Fyphen"
           git add UPDATE.md
           git commit -m "Update file with current date and time"
           git push https://$GH_TOKEN@github.com/Fyphen1223/MK8DXBotDiscord.git
