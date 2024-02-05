@@ -40,9 +40,11 @@ const server = http.createServer((req, res) => {
 
 client.on('ready', () => {
 	console.log('Logged in');
+	/*
 	client.guilds.cache.forEach((guild) => {
-		console.log(guild.name);
+		console.log(guild.name, guild.memberCount);
 	});
+	*/
 	if (process.env.WAKEMEUP == 1) {
 		server.listen(10000, () => {
 			console.log('Server is ready');
