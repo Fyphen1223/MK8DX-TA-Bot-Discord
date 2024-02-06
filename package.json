@@ -16,7 +16,7 @@
     "axios": "^1.6.7",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.1",
-    "googleapis": "^131.0.0",
+    "googleapis": "^132.0.0",
     "redis": "^4.6.12"
   },
   "devDependencies": {
