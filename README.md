@@ -1,9 +1,9 @@
 <br/>
 <p align="center">
-  <h3 align="center">MK8DX TA Bot Discord Beta</h3>
+  <h3 align="center">MK8DX TA Bot Discord / NITA</h3>
 
   <p align="center">
-    マリオカート8dX（MK8DX）のTAのために開発されたDiscord Bot. A Discord bot for TT(time trial) on MK8DX.
+    マリオカート8dX（MK8DX）のTA/NITAのために開発されたDiscord Bot. A Discord bot for TT(time trial) on MK8DX.
     <br/>
     <br/>
     <a href="https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands">デモを見る See demo</a>
