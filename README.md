@@ -1,12 +1,12 @@
 <br/>
 <p align="center">
-  <h3 align="center">MK8DX Bot Discord Beta</h3>
+  <h3 align="center">MK8DX TA Bot Discord / NITA</h3>
 
   <p align="center">
-    A Discord bot that register, inquire, or show MK8DX records.
+    マリオカート8dX（MK8DX）のTA/NITAのために開発されたDiscord Bot. A Discord bot for TT(time trial) on MK8DX.
     <br/>
     <br/>
-    <a href="https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands">View Demo (public instance, extremely unstable)</a>
+    <a href="https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands">デモを見る See demo</a>
     .
     <a href="https://github.com/Fyphen1223/MK8DXBotDiscord/issues">Report Bug</a>
     .
@@ -14,7 +14,7 @@
   </p>
 </p>
 
-Official instance: [Invite from here](https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands)
+Official instance: [招待はここから Invite from here](https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands)
 
 ![Contributors](https://img.shields.io/github/contributors/Fyphen1223/MK8DXBotDiscord?color=dark-green) ![Forks](https://img.shields.io/github/forks/Fyphen1223/MK8DXBotDiscord?style=social) ![Stargazers](https://img.shields.io/github/stars/Fyphen1223/MK8DXBotDiscord?style=social) ![Issues](https://img.shields.io/github/issues/Fyphen1223/MK8DXBotDiscord) ![License](https://img.shields.io/github/license/Fyphen1223/MK8DXBotDiscord) [![DeepScan grade](https://deepscan.io/api/teams/23064/projects/26359/branches/836702/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=23064&pid=26359&bid=836702)
 

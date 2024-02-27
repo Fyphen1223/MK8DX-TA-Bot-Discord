@@ -15,11 +15,11 @@
     "@google-cloud/local-auth": "3.0.1",
     "axios": "^1.6.7",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.4.1",
-    "googleapis": "^131.0.0",
-    "redis": "^4.6.12"
+    "dotenv": "^16.4.5",
+    "googleapis": "^133.0.0",
+    "redis": "^4.6.13"
   },
   "devDependencies": {
-    "eslint": "^8.56.0"
+    "eslint": "^8.57.0"
   }
 }
