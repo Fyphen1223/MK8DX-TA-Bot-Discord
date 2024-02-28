@@ -1,5 +1,7 @@
 # Terms of Service
 
+[日本語](./terms-of-service-ja.md)
+
 Your use of this service (the public instance, MK8DX TA Bot) is the subject to these below terms, privacy policy, and Discord's  Terms of Service, Privacy Policy, which may be updated without any notifications.
 Please read this terms of service and privacy policy carefully.
 By using this service, you are assumed to agree with these terms of service and privacy policy.
