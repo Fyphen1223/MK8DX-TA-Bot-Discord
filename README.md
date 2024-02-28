@@ -30,6 +30,7 @@ Official instance: [招待はここから Invite from here](https://discord.com/
 * [License](#license)
 * [Authors](#authors)
 * [Acknowledgements](#acknowledgements)
+* [Terms of Service](./terms-of-service.md)
 
 ## About The Project
 
