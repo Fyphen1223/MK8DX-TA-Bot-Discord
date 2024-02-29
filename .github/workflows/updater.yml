@@ -20,6 +20,6 @@ jobs:
           git config --global user.name "Fyphen"
           git add UPDATE.md
           git commit -m "Update file with current date and time"
-          git push https://$GH_TOKEN@github.com/Fyphen1223/MK8DXBotDiscord.git
+          git push https://$GH_TOKEN@github.com/Fyphen1223/MK8DX-TA-Bot-Discord.git
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
