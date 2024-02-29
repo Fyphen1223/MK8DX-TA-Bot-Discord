@@ -18,15 +18,10 @@ const redis = createClient({
 const client = new discord.Client({
 	intents: [
 		discord.GatewayIntentBits.DirectMessages,
-		discord.GatewayIntentBits.GuildInvites,
 		discord.GatewayIntentBits.GuildMembers,
 		discord.GatewayIntentBits.Guilds,
-		discord.GatewayIntentBits.MessageContent,
 	],
 	partials: [
-		discord.Partials.Channel,
-		discord.Partials.GuildMember,
-		discord.Partials.Message,
 		discord.Partials.User,
 	],
 });
