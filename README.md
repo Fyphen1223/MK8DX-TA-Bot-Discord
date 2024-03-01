@@ -8,15 +8,18 @@
     <br/>
     <a href="https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands">デモを見る See demo</a>
     .
-    <a href="https://github.com/Fyphen1223/MK8DXBotDiscord/issues">Report Bug</a>
+    <a href="https://github.com/Fyphen1223/MK8DX-TA-Bot-Discord/issues">Report Bug</a>
     .
-    <a href="https://github.com/Fyphen1223/MK8DXBotDiscord/issues">Request Feature</a>
+    <a href="https://github.com/Fyphen1223/MK8DX-TA-Bot-Discord/issues">Request Feature</a>
+    ,
+    <a href="https://github.com/Fyphen1223/MK8DX-TA-Bot-Discord/blob/main/README-ja.md">日本語</a>
+    
   </p>
 </p>
 
 Official instance: [招待はここから Invite from here](https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands)
 
-![Contributors](https://img.shields.io/github/contributors/Fyphen1223/MK8DXBotDiscord?color=dark-green) ![Forks](https://img.shields.io/github/forks/Fyphen1223/MK8DXBotDiscord?style=social) ![Stargazers](https://img.shields.io/github/stars/Fyphen1223/MK8DXBotDiscord?style=social) ![Issues](https://img.shields.io/github/issues/Fyphen1223/MK8DXBotDiscord) ![License](https://img.shields.io/github/license/Fyphen1223/MK8DXBotDiscord) [![DeepScan grade](https://deepscan.io/api/teams/23064/projects/26359/branches/836702/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=23064&pid=26359&bid=836702)
+![Contributors](https://img.shields.io/github/contributors/Fyphen1223/MK8DX-TA-Bot-Discord?color=dark-green) ![Forks](https://img.shields.io/github/forks/Fyphen1223/MK8DX-TA-Bot-Discord?style=social) ![Stargazers](https://img.shields.io/github/stars/Fyphen1223/MK8DX-TA-Bot-Discord?style=social) ![Issues](https://img.shields.io/github/issues/Fyphen1223/MK8DX-TA-Bot-Discord) ![License](https://img.shields.io/github/license/Fyphen1223/MK8DX-TA-Bot-Discord) [![DeepScan grade](https://deepscan.io/api/teams/23064/projects/26359/branches/836702/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=23064&pid=26359&bid=836702)
 
 ## Table Of Contents
 
