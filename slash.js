@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+
 require('dotenv').config();
 const process = require('process');
 const { REST, SlashCommandBuilder, Routes } = require('discord.js');
@@ -11,18 +13,19 @@ const commands = [
 		.setDescription('No Item Time Attack 150cc')
 		.setDMPermission(true)
 		.addSubcommand((subcommand) =>
-			subcommand
-				.setName('list')
-				.setDescription('Shows all tracks\' time'))
+			subcommand.setName('list').setDescription("Shows all tracks' time")
+		)
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('delete')
 				.setDescription('Delete your time on track')
 				.addStringOption((option) =>
-					option.setName('track')
+					option
+						.setName('track')
 						.setDescription('Track name')
 						.setAutocomplete(true)
-						.setRequired(true))
+						.setRequired(true)
+				)
 		)
 		.addSubcommand((subcommand) =>
 			subcommand
@@ -63,18 +66,19 @@ const commands = [
 		.setDescription('No Item Time Attack 200cc')
 		.setDMPermission(true)
 		.addSubcommand((subcommand) =>
-			subcommand
-				.setName('list')
-				.setDescription('Shows all tracks\' time'))
+			subcommand.setName('list').setDescription("Shows all tracks' time")
+		)
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('delete')
 				.setDescription('Delete your time on track')
 				.addStringOption((option) =>
-					option.setName('track')
+					option
+						.setName('track')
 						.setDescription('Track name')
 						.setAutocomplete(true)
-						.setRequired(true))
+						.setRequired(true)
+				)
 		)
 		.addSubcommand((subcommand) =>
 			subcommand
@@ -115,18 +119,19 @@ const commands = [
 		.setDescription('Time Attack 200cc')
 		.setDMPermission(true)
 		.addSubcommand((subcommand) =>
-			subcommand
-				.setName('list')
-				.setDescription('Shows all tracks\' time'))
+			subcommand.setName('list').setDescription("Shows all tracks' time")
+		)
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('delete')
 				.setDescription('Delete your time on track')
 				.addStringOption((option) =>
-					option.setName('track')
+					option
+						.setName('track')
 						.setDescription('Track name')
 						.setAutocomplete(true)
-						.setRequired(true))
+						.setRequired(true)
+				)
 		)
 		.addSubcommand((subcommand) =>
 			subcommand
@@ -167,18 +172,19 @@ const commands = [
 		.setDescription('Time Attack 150cc')
 		.setDMPermission(true)
 		.addSubcommand((subcommand) =>
-			subcommand
-				.setName('list')
-				.setDescription('Shows all tracks\' time'))
+			subcommand.setName('list').setDescription("Shows all tracks' time")
+		)
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('delete')
 				.setDescription('Delete your time on track')
 				.addStringOption((option) =>
-					option.setName('track')
+					option
+						.setName('track')
 						.setDescription('Track name')
 						.setAutocomplete(true)
-						.setRequired(true))
+						.setRequired(true)
+				)
 		)
 		.addSubcommand((subcommand) =>
 			subcommand
@@ -223,10 +229,12 @@ const commands = [
 				.setName('delete')
 				.setDescription('Delete your time on track')
 				.addStringOption((option) =>
-					option.setName('track')
+					option
+						.setName('track')
 						.setDescription('Track name')
 						.setAutocomplete(true)
-						.setRequired(true))
+						.setRequired(true)
+				)
 		)
 		.addSubcommand((subcommand) =>
 			subcommand
@@ -248,5 +256,11 @@ const commands = [
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 rest.put(Routes.applicationCommands(process.env.ID), { body: commands })
-	.then((data) => console.log(`Successfully registered ${data.length} application commands with ${(new Date() - start) / 1000}s`))
+	.then((data) =>
+		console.log(
+			`Successfully registered ${data.length} application commands with ${
+				(new Date() - start) / 1000
+			}s`
+		)
+	)
 	.catch(console.error);

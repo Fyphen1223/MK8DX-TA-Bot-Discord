@@ -6,7 +6,13 @@ const { convertMs, convertToMs, getDrop } = require('./util/util');
 const process = require('process');
 
 const { createClient } = require('redis');
-const { EmbedBuilder, ActivityType } = require('discord.js');
+const {
+	EmbedBuilder,
+	ActivityType,
+	ButtonBuilder,
+	ButtonStyle,
+	ActionRowBuilder,
+} = require('discord.js');
 const redis = createClient({
 	password: process.env.REDISPASS,
 	socket: {
@@ -21,9 +27,7 @@ const client = new discord.Client({
 		discord.GatewayIntentBits.GuildMembers,
 		discord.GatewayIntentBits.Guilds,
 	],
-	partials: [
-		discord.Partials.User,
-	],
+	partials: [discord.Partials.User],
 });
 
 const http = require('http');
@@ -564,8 +568,14 @@ client.on('interactionCreate', async (interaction) => {
 				}
 			)
 			.setTimestamp();
+		const link = new ButtonBuilder()
+			.setLabel('See WR')
+			.setURL(data.wr.ta150[index][2])
+			.setStyle(ButtonStyle.Link);
+		const row = new ActionRowBuilder().addComponents(link);
 		await interaction.editReply({
 			embeds: [embed],
+			components: [row],
 		});
 		return;
 	}
@@ -738,8 +748,14 @@ client.on('interactionCreate', async (interaction) => {
 				}
 			)
 			.setTimestamp();
+		const link = new ButtonBuilder()
+			.setLabel('See WR')
+			.setURL(data.wr.ta200[index][2])
+			.setStyle(ButtonStyle.Link);
+		const row = new ActionRowBuilder().addComponents(link);
 		await interaction.editReply({
 			embeds: [embed],
+			components: [row],
 		});
 		return;
 	}
