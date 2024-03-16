@@ -43,7 +43,7 @@ Simply use this!
 
 ## Built With
 
-Node.js, discord.js, redis, and completely free hosting on Render!
+Node.js, discord.js, redis, and -- completely free hosting on Render! -- No longer on Render, on VPS, 24/7!
 
 ## Getting Started
 
