@@ -116,10 +116,10 @@ client.on('interactionCreate', async (interaction) => {
 		await interaction.editReply(`Changed your language to ${lang}`);
 	}
 	if (command === 'nita150' && subcommand === 'register') {
+		await interaction.deferReply();
 		const track = interaction.options.getString('track');
 		let time = interaction.options.getString('time');
 		time = convertToMs(time);
-		await interaction.deferReply();
 		let current = await redis.get(interaction.user.id);
 		if (!current)
 			await redis.set(interaction.user.id, JSON.stringify(data.default));
@@ -150,7 +150,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.nita150[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 150cc TA to ${convertMs(time)}`
+				`Set your time on ${track} on 150cc TA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+					time - data.wr.nita150[index][0]
+				)}`
 			);
 			return;
 		}
