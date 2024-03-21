@@ -323,7 +323,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.nita200[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 200cc NITA to ${convertMs(time)}`
+				`Set your time on ${track} on 200cc NITA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+					time - data.wr.nita200[index][0]
+				)}!`
 			);
 			return;
 		}
@@ -496,7 +498,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.ta150[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 150cc TA to ${convertMs(time)}`
+				`Set your time on ${track} on 150cc TA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+					time - data.wr.ta150[index][0]
+				)}!`
 			);
 			return;
 		}
@@ -676,7 +680,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.ta200[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 200cc TA to ${convertMs(time)}`
+				`Set your time on ${track} on 200cc TA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+					time - data.wr.ta200[index][0]
+				)}!`
 			);
 			return;
 		}
