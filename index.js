@@ -111,6 +111,9 @@ client.on('interactionCreate', async (interaction) => {
 		await interaction.deferReply();
 		const lang = interaction.options.getString('lang');
 		let current = JSON.parse(await redis.get(interaction.user.id));
+		if (!current)
+			await redis.set(interaction.user.id, JSON.stringify(data.default));
+		current = JSON.parse(await redis.get(interaction.user.id));
 		current.lang = lang;
 		await redis.set(interaction.user.id, JSON.stringify(current));
 		await interaction.editReply(`Changed your language to ${lang}`);
