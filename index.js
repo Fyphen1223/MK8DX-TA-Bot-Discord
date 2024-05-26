@@ -885,7 +885,7 @@ client.on('interactionCreate', async (interaction) => {
 	}
 });
 
-client.login(process.env.BETA);
+client.login(process.env.TOKEN);
 
 process.on('uncaughtException', (err) => {
 	console.log(err.stack);
