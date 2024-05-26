@@ -1,6 +1,8 @@
 const axios = require('axios');
 const record = require('./data/data.json');
 const fs = require('fs');
+
+const { updateNITA } = require('./nita.js');
 async function update() {
 	const data = await axios.get('https://mkwrs.com/mk8dx/');
 
@@ -80,6 +82,7 @@ async function update() {
 		i++;
 	}
 	fs.writeFileSync('./data/latest.json', JSON.stringify(record));
+	await updateNITA();
 }
 
 function convertIntoMs(time) {
