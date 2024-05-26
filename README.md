@@ -4,7 +4,7 @@
 
   <p align="center">
     マリオカート8dX（MK8DX）のTA/NITAのために開発されたDiscord Bot. A Discord bot for TT(time trial) on MK8DX.
-    <br/>タイムが完全に自動更新されるようになりました。TA/NITA両方対応です。The times are now automatically updated. It is compatible with both TA/NITA.
+    <br/>タイムが完全に自動更新されるようになりました。TA/NITA両方に対応しています。The times are now automatically updated. It is compatible with both TA/NITA.
     <br/>
     <br/>
     <a href="https://discord.com/api/oauth2/authorize?client_id=1197118650046492702&permissions=1067299687424&scope=bot+applications.commands">デモを見る See demo</a>
