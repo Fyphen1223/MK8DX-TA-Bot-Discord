@@ -153,7 +153,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.nita150[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 150cc TA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+				`Set your time on ${track} on 150cc TA to ${convertMs(
+					time
+				)}!\nYour time is slower than the WR by ${convertMs(
 					time - data.wr.nita150[index][0]
 				)}`
 			);
@@ -197,9 +199,18 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.nita150[index];
 		if (!time) {
-			await interaction.editReply(
-				data.messages[current.lang].notregistered
-			);
+			const button = new ButtonBuilder()
+				.setLabel('Watch the WR')
+				.setURL(data.wr.nita150[index][2])
+				.setStyle(ButtonStyle.Link);
+			await interaction.editReply({
+				content: `${
+					data.messages[current.lang].notregistered
+				}\nThe current world record is ${convertMs(
+					data.wr.nita150[index][0]
+				)} by ${data.wr.nita150[index][1]}`,
+				components: [new ActionRowBuilder().addComponents(button)],
+			});
 			return;
 		}
 		const embed = new EmbedBuilder()
@@ -229,8 +240,13 @@ client.on('interactionCreate', async (interaction) => {
 				}
 			)
 			.setTimestamp();
+		const button = new ButtonBuilder()
+			.setLabel('Watch the WR')
+			.setURL(data.wr.nita150[index][2])
+			.setStyle(ButtonStyle.Link);
 		await interaction.editReply({
 			embeds: [embed],
+			components: [new ActionRowBuilder().addComponents(button)],
 		});
 		return;
 	}
@@ -326,7 +342,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.nita200[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 200cc NITA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+				`Set your time on ${track} on 200cc NITA to ${convertMs(
+					time
+				)}!\nYour time is slower than the WR by ${convertMs(
 					time - data.wr.nita200[index][0]
 				)}!`
 			);
@@ -370,9 +388,18 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.nita200[index];
 		if (!time) {
-			await interaction.editReply(
-				data.messages[current.lang].notregistered
-			);
+			const button = new ButtonBuilder()
+				.setLabel('Watch the WR')
+				.setURL(data.wr.nita200[index][2])
+				.setStyle(ButtonStyle.Link);
+			await interaction.editReply({
+				content: `${
+					data.messages[current.lang].notregistered
+				}\nThe current world record is ${convertMs(
+					data.wr.nita200[index][0]
+				)} by ${data.wr.nita200[index][1]}`,
+				components: [new ActionRowBuilder().addComponents(button)],
+			});
 			return;
 		}
 		const embed = new EmbedBuilder()
@@ -402,8 +429,13 @@ client.on('interactionCreate', async (interaction) => {
 				}
 			)
 			.setTimestamp();
+		const button = new ButtonBuilder()
+			.setLabel('Watch the WR')
+			.setURL(data.wr.nita200[index][2])
+			.setStyle(ButtonStyle.Link);
 		await interaction.editReply({
 			embeds: [embed],
+			components: [new ActionRowBuilder().addComponents(button)],
 		});
 		return;
 	}
@@ -501,7 +533,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.ta150[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 150cc TA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+				`Set your time on ${track} on 150cc TA to ${convertMs(
+					time
+				)}!\nYour time is slower than the WR by ${convertMs(
 					time - data.wr.ta150[index][0]
 				)}!`
 			);
@@ -545,9 +579,18 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.ta150[index];
 		if (!time) {
-			await interaction.editReply(
-				data.messages[current.lang].notregistered
-			);
+			const button = new ButtonBuilder()
+				.setLabel('Watch the WR')
+				.setURL(data.wr.ta150[index][2])
+				.setStyle(ButtonStyle.Link);
+			await interaction.editReply({
+				content: `${
+					data.messages[current.lang].notregistered
+				}\nThe current world record is ${convertMs(
+					data.wr.ta150[index][0]
+				)} by ${data.wr.ta150[index][1]}`,
+				components: [new ActionRowBuilder().addComponents(button)],
+			});
 			return;
 		}
 		const embed = new EmbedBuilder()
@@ -683,7 +726,9 @@ client.on('interactionCreate', async (interaction) => {
 			current.ta200[index] = time;
 			await redis.set(interaction.user.id, JSON.stringify(current));
 			await interaction.editReply(
-				`Set your time on ${track} on 200cc TA to ${convertMs(time)}!\nYour time is slower than the WR by ${convertMs(
+				`Set your time on ${track} on 200cc TA to ${convertMs(
+					time
+				)}!\nYour time is slower than the WR by ${convertMs(
 					time - data.wr.ta200[index][0]
 				)}!`
 			);
@@ -727,9 +772,18 @@ client.on('interactionCreate', async (interaction) => {
 		index++;
 		const time = current.ta200[index];
 		if (!time) {
-			await interaction.editReply(
-				data.messages[current.lang].notregistered
-			);
+			const button = new ButtonBuilder()
+				.setLabel('Watch the WR')
+				.setURL(data.wr.ta200[index][2])
+				.setStyle(ButtonStyle.Link);
+			await interaction.editReply({
+				content: `${
+					data.messages[current.lang].notregistered
+				}\nThe current world record is ${convertMs(
+					data.wr.ta200[index][0]
+				)} by ${data.wr.ta200[index][1]}`,
+				components: [new ActionRowBuilder().addComponents(button)],
+			});
 			return;
 		}
 		const embed = new EmbedBuilder()
@@ -831,7 +885,7 @@ client.on('interactionCreate', async (interaction) => {
 	}
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.BETA);
 
 process.on('uncaughtException', (err) => {
 	console.log(err.stack);
