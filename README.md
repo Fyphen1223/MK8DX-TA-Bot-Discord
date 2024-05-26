@@ -64,7 +64,7 @@ npm install pnpm@latest -g
 1. Clone the repo
 
 ```sh
-git clone https://github.com/Fyphen1223/MK8DXBotDiscord.git
+git clone https://github.com/Fyphen1223/MK8DX-TA-Bot-Discord.git
 ```
 
 2. Install NPM packages
