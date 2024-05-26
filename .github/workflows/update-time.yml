@@ -1,4 +1,4 @@
-name: Update and PR
+name: Update and Commit
 
 on:
   schedule:
@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        ref: main # メインブランチをチェックアウト
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -36,7 +38,6 @@ jobs:
       run: |
         git config --local user.name "github-actions[bot]"
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git checkout -b update-branch
         git add -A
         git commit -m "Update results from update.js"
       env:
@@ -46,13 +47,4 @@ jobs:
       uses: ad-m/github-push-action@v0.6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: update-branch # 新しいブランチにプッシュ
-
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        branch: update-branch
-        base: main
-        title: "Automated update"
-        body: "This PR was created automatically by the update workflow."
+        branch: main # プッシュ先のブランチを指定
