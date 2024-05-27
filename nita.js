@@ -1,6 +1,6 @@
 const axios = require('axios');
 const jsdom = require('jsdom');
-const record = require('./data/data.json');
+const record = require('./data/latest.json');
 const fs = require('fs');
 
 async function updateNITA() {
