@@ -18,8 +18,8 @@ dependencies:
     specifier: ^16.4.5
     version: 16.4.5
   googleapis:
-    specifier: ^137.1.0
-    version: 137.1.0
+    specifier: ^140.0.0
+    version: 140.0.0
   jsdom:
     specifier: ^24.1.0
     version: 24.1.0
@@ -787,8 +787,8 @@ packages:
       - supports-color
     dev: false
 
-  /googleapis@137.1.0:
-    resolution: {integrity: sha512-2L7SzN0FLHyQtFmyIxrcXhgust77067pkkduqkbIpDuj9JzVnByxsRrcRfUMFQam3rQkWW2B0f1i40IwKDWIVQ==}
+  /googleapis@140.0.0:
+    resolution: {integrity: sha512-r8i++0lnexrvRA0/uogz3N3eJprddjxAcueTO5f09D/U5yxaOm5G+a892QkHsV+o15NP9whlLUiJr9zazb9ePg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       google-auth-library: 9.10.0
