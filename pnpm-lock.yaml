@@ -27,8 +27,8 @@ importers:
         specifier: ^24.1.0
         version: 24.1.0
       redis:
-        specifier: ^4.6.14
-        version: 4.6.14
+        specifier: ^4.6.15
+        version: 4.6.15
     devDependencies:
       eslint:
         specifier: ^9.6.0
@@ -119,8 +119,8 @@ packages:
     peerDependencies:
       '@redis/client': ^1.0.0
 
-  '@redis/client@1.5.16':
-    resolution: {integrity: sha512-X1a3xQ5kEMvTib5fBrHKh6Y+pXbeKXqziYuxOUo1ojQNECg4M5Etd1qqyhMap+lFUOAh8S7UYevgJHOm4A+NOg==}
+  '@redis/client@1.5.17':
+    resolution: {integrity: sha512-IPvU9A31qRCZ7lds/x+ksuK/UMndd0EASveAvCvEtFFKIZjZ+m/a4a0L7S28KEWoR5ka8526hlSghDo4Hrc2Hg==}
     engines: {node: '>=14'}
 
   '@redis/graph@1.1.1':
@@ -658,8 +658,8 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  redis@4.6.14:
-    resolution: {integrity: sha512-GrNg/e33HtsQwNXL7kJT+iNFPSwE1IPmd7wzV3j4f2z0EYxZfZE7FVTmUysgAtqQQtg5NXF5SNLR9OdO/UHOfw==}
+  redis@4.6.15:
+    resolution: {integrity: sha512-2NtuOpMW3tnYzBw6S8mbXSX7RPzvVFCA2wFJq9oErushO2UeBkxObk+uvo7gv7n0rhWeOj/IzrHO8TjcFlRSOg==}
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
@@ -942,31 +942,31 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@redis/bloom@1.2.0(@redis/client@1.5.16)':
+  '@redis/bloom@1.2.0(@redis/client@1.5.17)':
     dependencies:
-      '@redis/client': 1.5.16
+      '@redis/client': 1.5.17
 
-  '@redis/client@1.5.16':
+  '@redis/client@1.5.17':
     dependencies:
       cluster-key-slot: 1.1.2
       generic-pool: 3.9.0
       yallist: 4.0.0
 
-  '@redis/graph@1.1.1(@redis/client@1.5.16)':
+  '@redis/graph@1.1.1(@redis/client@1.5.17)':
     dependencies:
-      '@redis/client': 1.5.16
+      '@redis/client': 1.5.17
 
-  '@redis/json@1.0.6(@redis/client@1.5.16)':
+  '@redis/json@1.0.6(@redis/client@1.5.17)':
     dependencies:
-      '@redis/client': 1.5.16
+      '@redis/client': 1.5.17
 
-  '@redis/search@1.1.6(@redis/client@1.5.16)':
+  '@redis/search@1.1.6(@redis/client@1.5.17)':
     dependencies:
-      '@redis/client': 1.5.16
+      '@redis/client': 1.5.17
 
-  '@redis/time-series@1.0.5(@redis/client@1.5.16)':
+  '@redis/time-series@1.0.5(@redis/client@1.5.17)':
     dependencies:
-      '@redis/client': 1.5.16
+      '@redis/client': 1.5.17
 
   '@sapphire/async-queue@1.5.2': {}
 
@@ -1529,14 +1529,14 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  redis@4.6.14:
+  redis@4.6.15:
     dependencies:
-      '@redis/bloom': 1.2.0(@redis/client@1.5.16)
-      '@redis/client': 1.5.16
-      '@redis/graph': 1.1.1(@redis/client@1.5.16)
-      '@redis/json': 1.0.6(@redis/client@1.5.16)
-      '@redis/search': 1.1.6(@redis/client@1.5.16)
-      '@redis/time-series': 1.0.5(@redis/client@1.5.16)
+      '@redis/bloom': 1.2.0(@redis/client@1.5.17)
+      '@redis/client': 1.5.17
+      '@redis/graph': 1.1.1(@redis/client@1.5.17)
+      '@redis/json': 1.0.6(@redis/client@1.5.17)
+      '@redis/search': 1.1.6(@redis/client@1.5.17)
+      '@redis/time-series': 1.0.5(@redis/client@1.5.17)
 
   requires-port@1.0.0: {}
 
