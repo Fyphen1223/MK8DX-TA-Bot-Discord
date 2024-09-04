@@ -21,8 +21,8 @@ importers:
         specifier: ^16.4.5
         version: 16.4.5
       googleapis:
-        specifier: ^140.0.1
-        version: 140.0.1
+        specifier: ^144.0.0
+        version: 144.0.0
       jsdom:
         specifier: ^24.1.1
         version: 24.1.1
@@ -428,8 +428,8 @@ packages:
     resolution: {integrity: sha512-/fhDZEJZvOV3X5jmD+fKxMqma5q2Q9nZNSF3kn1F18tpxmA86BcTxAGBQdM0N89Z3bEaIs+HVznSmFJEAmMTjA==}
     engines: {node: '>=14.0.0'}
 
-  googleapis@140.0.1:
-    resolution: {integrity: sha512-ZGvBX4mQcFXO9ACnVNg6Aqy3KtBPB5zTuue43YVLxwn8HSv8jB7w+uDKoIPSoWuxGROgnj2kbng6acXncOQRNA==}
+  googleapis@144.0.0:
+    resolution: {integrity: sha512-ELcWOXtJxjPX4vsKMh+7V+jZvgPwYMlEhQFiu2sa9Qmt5veX8nwXPksOWGGN6Zk4xCiLygUyaz7xGtcMO+Onxw==}
     engines: {node: '>=14.0.0'}
 
   gopd@1.0.1:
@@ -464,10 +464,6 @@ packages:
 
   http-proxy-agent@7.0.2:
     resolution: {integrity: sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig==}
-    engines: {node: '>= 14'}
-
-  https-proxy-agent@7.0.4:
-    resolution: {integrity: sha512-wlwpilI7YdjSkWaQ/7omYBMTliDcmCN8OLihO6I9B86g06lMyAoqgoDpV0XqoaPOKj+0DIdAvnsWfyAAhmimcg==}
     engines: {node: '>= 14'}
 
   https-proxy-agent@7.0.5:
@@ -1258,7 +1254,7 @@ snapshots:
   gaxios@6.6.0:
     dependencies:
       extend: 3.0.2
-      https-proxy-agent: 7.0.4
+      https-proxy-agent: 7.0.5
       is-stream: 2.0.1
       node-fetch: 2.7.0
       uuid: 9.0.1
@@ -1314,7 +1310,7 @@ snapshots:
       - encoding
       - supports-color
 
-  googleapis@140.0.1:
+  googleapis@144.0.0:
     dependencies:
       google-auth-library: 9.10.0
       googleapis-common: 7.2.0
@@ -1353,13 +1349,6 @@ snapshots:
       whatwg-encoding: 3.1.1
 
   http-proxy-agent@7.0.2:
-    dependencies:
-      agent-base: 7.1.1
-      debug: 4.3.5
-    transitivePeerDependencies:
-      - supports-color
-
-  https-proxy-agent@7.0.4:
     dependencies:
       agent-base: 7.1.1
       debug: 4.3.5
