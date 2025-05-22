@@ -23,11 +23,13 @@ const redis = createClient({
 
 const client = new discord.Client({
 	intents: [
-		discord.GatewayIntentBits.DirectMessages,
-		discord.GatewayIntentBits.GuildMembers,
-		discord.GatewayIntentBits.Guilds,
+		//discord.GatewayIntentBits.DirectMessages,
+		//discord.GatewayIntentBits.GuildMembers,
+		//discord.GatewayIntentBits.Guilds,
 	],
-	partials: [discord.Partials.User],
+	partials: [
+		//discord.Partials.User
+	],
 });
 
 const http = require('http');
